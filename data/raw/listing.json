@@ -1,0 +1,322 @@
+[
+  {
+    "name": "LICENSE",
+    "path": "public/brca_metabric/LICENSE",
+    "sha": "d5f3c4b53574a0700c33233231009782aef56e84",
+    "size": 455,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/LICENSE?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/LICENSE",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/d5f3c4b53574a0700c33233231009782aef56e84",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/LICENSE",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/LICENSE?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/d5f3c4b53574a0700c33233231009782aef56e84",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/LICENSE"
+    }
+  },
+  {
+    "name": "Readme.txt",
+    "path": "public/brca_metabric/Readme.txt",
+    "sha": "6202caf574011ab555ac6b792d9015f41df1463a",
+    "size": 122,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/Readme.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/Readme.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/6202caf574011ab555ac6b792d9015f41df1463a",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/Readme.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/Readme.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/6202caf574011ab555ac6b792d9015f41df1463a",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/Readme.txt"
+    }
+  },
+  {
+    "name": "case_lists",
+    "path": "public/brca_metabric/case_lists",
+    "sha": "3fdb3797242f9dc650647b09f9567aa4c4fd6047",
+    "size": 0,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/case_lists?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/tree/master/public/brca_metabric/case_lists",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/trees/3fdb3797242f9dc650647b09f9567aa4c4fd6047",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/case_lists?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/trees/3fdb3797242f9dc650647b09f9567aa4c4fd6047",
+      "html": "https://github.com/cBioPortal/datahub/tree/master/public/brca_metabric/case_lists"
+    }
+  },
+  {
+    "name": "data_clinical_patient.txt",
+    "path": "public/brca_metabric/data_clinical_patient.txt",
+    "sha": "4298260cfc2c99e4e70881ceafdc0486b851e41b",
+    "size": 131,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_clinical_patient.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_clinical_patient.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/4298260cfc2c99e4e70881ceafdc0486b851e41b",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/data_clinical_patient.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_clinical_patient.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/4298260cfc2c99e4e70881ceafdc0486b851e41b",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_clinical_patient.txt"
+    }
+  },
+  {
+    "name": "data_clinical_sample.txt",
+    "path": "public/brca_metabric/data_clinical_sample.txt",
+    "sha": "a024bc09b9b0b8934ba742d0a5d5895e616bd1bc",
+    "size": 131,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_clinical_sample.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_clinical_sample.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/a024bc09b9b0b8934ba742d0a5d5895e616bd1bc",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/data_clinical_sample.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_clinical_sample.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/a024bc09b9b0b8934ba742d0a5d5895e616bd1bc",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_clinical_sample.txt"
+    }
+  },
+  {
+    "name": "data_cna.txt",
+    "path": "public/brca_metabric/data_cna.txt",
+    "sha": "d06fb05df2bf374e138fa91bf32d845dad72e31d",
+    "size": 134,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_cna.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_cna.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/d06fb05df2bf374e138fa91bf32d845dad72e31d",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/data_cna.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_cna.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/d06fb05df2bf374e138fa91bf32d845dad72e31d",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_cna.txt"
+    }
+  },
+  {
+    "name": "data_gene_panel_matrix.txt",
+    "path": "public/brca_metabric/data_gene_panel_matrix.txt",
+    "sha": "41278cd848ff8e5cf9f6ac7f354ccf0e1ee39fdb",
+    "size": 130,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_gene_panel_matrix.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_gene_panel_matrix.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/41278cd848ff8e5cf9f6ac7f354ccf0e1ee39fdb",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/data_gene_panel_matrix.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_gene_panel_matrix.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/41278cd848ff8e5cf9f6ac7f354ccf0e1ee39fdb",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_gene_panel_matrix.txt"
+    }
+  },
+  {
+    "name": "data_methylation_promoters_rrbs.txt",
+    "path": "public/brca_metabric/data_methylation_promoters_rrbs.txt",
+    "sha": "a77aef2990b87f60e30a3289b0eaa7f34f9c4abe",
+    "size": 134,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_methylation_promoters_rrbs.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_methylation_promoters_rrbs.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/a77aef2990b87f60e30a3289b0eaa7f34f9c4abe",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/data_methylation_promoters_rrbs.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_methylation_promoters_rrbs.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/a77aef2990b87f60e30a3289b0eaa7f34f9c4abe",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_methylation_promoters_rrbs.txt"
+    }
+  },
+  {
+    "name": "data_mrna_illumina_microarray.txt",
+    "path": "public/brca_metabric/data_mrna_illumina_microarray.txt",
+    "sha": "9516600ad4aaaa255dd269ad5e197d7dae836c01",
+    "size": 134,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_mrna_illumina_microarray.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_mrna_illumina_microarray.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/9516600ad4aaaa255dd269ad5e197d7dae836c01",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/data_mrna_illumina_microarray.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_mrna_illumina_microarray.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/9516600ad4aaaa255dd269ad5e197d7dae836c01",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_mrna_illumina_microarray.txt"
+    }
+  },
+  {
+    "name": "data_mrna_illumina_microarray_zscores_ref_diploid_samples.txt",
+    "path": "public/brca_metabric/data_mrna_illumina_microarray_zscores_ref_diploid_samples.txt",
+    "sha": "7ad6a009a9186aa131fca92dd21e12bb8179f832",
+    "size": 134,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_mrna_illumina_microarray_zscores_ref_diploid_samples.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_mrna_illumina_microarray_zscores_ref_diploid_samples.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/7ad6a009a9186aa131fca92dd21e12bb8179f832",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/data_mrna_illumina_microarray_zscores_ref_diploid_samples.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_mrna_illumina_microarray_zscores_ref_diploid_samples.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/7ad6a009a9186aa131fca92dd21e12bb8179f832",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_mrna_illumina_microarray_zscores_ref_diploid_samples.txt"
+    }
+  },
+  {
+    "name": "data_mutations.txt",
+    "path": "public/brca_metabric/data_mutations.txt",
+    "sha": "b9ff217c2a235ed3d26a84acc1180b0988ff411f",
+    "size": 132,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_mutations.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_mutations.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/b9ff217c2a235ed3d26a84acc1180b0988ff411f",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/data_mutations.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/data_mutations.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/b9ff217c2a235ed3d26a84acc1180b0988ff411f",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/data_mutations.txt"
+    }
+  },
+  {
+    "name": "meta_clinical_patient.txt",
+    "path": "public/brca_metabric/meta_clinical_patient.txt",
+    "sha": "3ffdd5bf3d2ccf5e4618e53fe82de0a13fbd645f",
+    "size": 143,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_clinical_patient.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_clinical_patient.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/3ffdd5bf3d2ccf5e4618e53fe82de0a13fbd645f",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/meta_clinical_patient.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_clinical_patient.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/3ffdd5bf3d2ccf5e4618e53fe82de0a13fbd645f",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_clinical_patient.txt"
+    }
+  },
+  {
+    "name": "meta_clinical_sample.txt",
+    "path": "public/brca_metabric/meta_clinical_sample.txt",
+    "sha": "8459e7ba4e6f0a65958e98eeb23507e9a607bcd4",
+    "size": 141,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_clinical_sample.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_clinical_sample.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/8459e7ba4e6f0a65958e98eeb23507e9a607bcd4",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/meta_clinical_sample.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_clinical_sample.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/8459e7ba4e6f0a65958e98eeb23507e9a607bcd4",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_clinical_sample.txt"
+    }
+  },
+  {
+    "name": "meta_cna.txt",
+    "path": "public/brca_metabric/meta_cna.txt",
+    "sha": "20d9ccb89d17b5bdcd0ecb2f6ce64edee5198978",
+    "size": 513,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_cna.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_cna.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/20d9ccb89d17b5bdcd0ecb2f6ce64edee5198978",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/meta_cna.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_cna.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/20d9ccb89d17b5bdcd0ecb2f6ce64edee5198978",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_cna.txt"
+    }
+  },
+  {
+    "name": "meta_gene_panel_matrix.txt",
+    "path": "public/brca_metabric/meta_gene_panel_matrix.txt",
+    "sha": "93555c68b39ef97923ad77e44b186e4fecc7ccef",
+    "size": 152,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_gene_panel_matrix.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_gene_panel_matrix.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/93555c68b39ef97923ad77e44b186e4fecc7ccef",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/meta_gene_panel_matrix.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_gene_panel_matrix.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/93555c68b39ef97923ad77e44b186e4fecc7ccef",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_gene_panel_matrix.txt"
+    }
+  },
+  {
+    "name": "meta_methylation_promoters_rrbs.txt",
+    "path": "public/brca_metabric/meta_methylation_promoters_rrbs.txt",
+    "sha": "09cb9c8b8a6846a1e339d3252705eafe312e849e",
+    "size": 606,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_methylation_promoters_rrbs.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_methylation_promoters_rrbs.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/09cb9c8b8a6846a1e339d3252705eafe312e849e",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/meta_methylation_promoters_rrbs.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_methylation_promoters_rrbs.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/09cb9c8b8a6846a1e339d3252705eafe312e849e",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_methylation_promoters_rrbs.txt"
+    }
+  },
+  {
+    "name": "meta_mrna_illumina_microarray.txt",
+    "path": "public/brca_metabric/meta_mrna_illumina_microarray.txt",
+    "sha": "81de441ca73c52d67a8fbebed955ac9a4386605d",
+    "size": 348,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_mrna_illumina_microarray.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_mrna_illumina_microarray.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/81de441ca73c52d67a8fbebed955ac9a4386605d",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/meta_mrna_illumina_microarray.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_mrna_illumina_microarray.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/81de441ca73c52d67a8fbebed955ac9a4386605d",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_mrna_illumina_microarray.txt"
+    }
+  },
+  {
+    "name": "meta_mrna_illumina_microarray_zscores_ref_diploid_samples.txt",
+    "path": "public/brca_metabric/meta_mrna_illumina_microarray_zscores_ref_diploid_samples.txt",
+    "sha": "92f3dda111828515d2dbba323a2b58e57a7bb317",
+    "size": 470,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_mrna_illumina_microarray_zscores_ref_diploid_samples.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_mrna_illumina_microarray_zscores_ref_diploid_samples.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/92f3dda111828515d2dbba323a2b58e57a7bb317",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/meta_mrna_illumina_microarray_zscores_ref_diploid_samples.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_mrna_illumina_microarray_zscores_ref_diploid_samples.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/92f3dda111828515d2dbba323a2b58e57a7bb317",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_mrna_illumina_microarray_zscores_ref_diploid_samples.txt"
+    }
+  },
+  {
+    "name": "meta_mutations.txt",
+    "path": "public/brca_metabric/meta_mutations.txt",
+    "sha": "30898dcdf0a3d0ed8a975d5992938735f851663d",
+    "size": 347,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_mutations.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_mutations.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/30898dcdf0a3d0ed8a975d5992938735f851663d",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/meta_mutations.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_mutations.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/30898dcdf0a3d0ed8a975d5992938735f851663d",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_mutations.txt"
+    }
+  },
+  {
+    "name": "meta_study.txt",
+    "path": "public/brca_metabric/meta_study.txt",
+    "sha": "5fbfe8388b597818823d9783eba203fa03506bf5",
+    "size": 372,
+    "url": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_study.txt?ref=master",
+    "html_url": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_study.txt",
+    "git_url": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/5fbfe8388b597818823d9783eba203fa03506bf5",
+    "download_url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_metabric/meta_study.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/cBioPortal/datahub/contents/public/brca_metabric/meta_study.txt?ref=master",
+      "git": "https://api.github.com/repos/cBioPortal/datahub/git/blobs/5fbfe8388b597818823d9783eba203fa03506bf5",
+      "html": "https://github.com/cBioPortal/datahub/blob/master/public/brca_metabric/meta_study.txt"
+    }
+  }
+]

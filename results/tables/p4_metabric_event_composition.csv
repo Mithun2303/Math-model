@@ -1,0 +1,8 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+category,n,fraction_of_964_usable_events
+Recurred & Living (a recurrence; no death),92,0.0954356846473029
+Recurred & Died of Other Causes (recurrence recorded; death by other cause),65,0.06742738589211618
+Died of Disease & RFS < OS (recurrence preceded disease-specific death),545,0.5653526970954357
+Died of Disease & RFS = OS (death recorded as first event; recurrence may be unrecorded),101,0.10477178423236515
+Vital status missing,161,0.16701244813278007
+TOTAL usable events,964,1.0

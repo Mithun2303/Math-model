@@ -1,0 +1,15 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+quantity,value
+"T (first crossing of 0.1), G1 [months]",219.8988938928626
+dT/dln(r) [months],-563.4336880068549
+dT/dln(q) [months],145.7300564809278
+dT/dln(a) [months],-32.82727950238775
+dT/dln(delta_D) [months],1.5376980492955772
+dT/dln(beta) [months],218.23330032828758
+dT/dln(rho) [months],38.93771912526
+dT/dln(eta) [months],-5.925760584612404
+dT/dln(N0) [months],-22.776559543337697
+dT/dln(fD) [months],185.9460549247244
+dT/dln(N_detect) [months],50.618202619649864
+rank of the 1 x p event-time Jacobian,1.0
+dimension of the iso-T manifold (p - 1) for p = 10 inputs,9.0

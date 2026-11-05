@@ -1,0 +1,8 @@
+# phase3 config sha256[:12]=c7e70720ebfc; hypothetical simulated quantities
+case,slice,n_boundary_cells_checked,n_interior_cells_checked,label_agreement_boundary_tight_numerics,label_agreement_interior_tight_numerics,jitter_1e-6_flip_rate_boundary,jitter_1e-6_flip_rate_interior,n_unresolved_tight
+A,PD,201,200,1.0,1.0,0.0,0.0,0
+A,NE,120,200,1.0,1.0,0.0,0.0,0
+B1,PD,203,200,1.0,1.0,0.0,0.0,0
+B1,NE,120,200,1.0,1.0,0.0,0.0,0
+B2,PD,183,200,1.0,1.0,0.0,0.0,0
+B2,NE,120,200,1.0,1.0,0.0,0.0,0

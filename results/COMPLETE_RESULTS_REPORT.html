@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Predicting Cancer Relapse Through Mathematical Modelling of Tumour Dormancy</title>
+<link rel="stylesheet" href="file:///Users/mithunkarthickvenkatesan/tumour-dormancy-relapse/tools/katex_css/katex.min.css"><style>
+@page { size: A4; margin: 22mm 18mm 22mm 18mm; @bottom-center { content: counter(page); font: 9pt Georgia, serif; color:#444 }
+  @top-right { content: string(sect); font: italic 8pt Georgia, serif; color:#777 } }
+@page :first { @bottom-center { content: none } @top-right { content: none } }
+html { font: 10.5pt/1.42 Georgia, 'Times New Roman', serif; color:#111 }
+body { margin:0; hyphens:auto; text-align:justify }
+h1 { font: bold 22pt Georgia, serif; text-align:center; margin: 60mm 0 6mm; line-height:1.2 }
+h2 { font: bold 15pt Georgia, serif; margin: 7mm 0 3mm; break-after:avoid; border-bottom:1px solid #999; padding-bottom:1mm; string-set: sect content() }
+h2.notoc { border:none }
+h3 { font: bold 12pt Georgia, serif; margin: 5mm 0 2mm; break-after:avoid }
+h4 { font: bold italic 10.5pt Georgia, serif; margin: 4mm 0 1.5mm; break-after:avoid }
+h2:not(.notoc) { break-before: page }
+p { margin: 0 0 2.4mm; orphans:3; widows:3 }
+.mathd { margin: 2mm 0; text-align:center; overflow-x:auto; overflow-y:hidden; font-size:1em; break-inside:avoid }
+.katex { font-size:1.05em } .katex-display { margin:0 }
+figure { margin: 4mm 0; break-inside:avoid; text-align:center }
+figure img { max-width:100%; max-height: 120mm; width:auto; height:auto; border:1px solid #ddd }
+figcaption { font-size:8.8pt; text-align:justify; margin-top:1.5mm; line-height:1.32; hyphens:auto }
+.tbl { margin: 3mm 0 4mm; break-inside:avoid-page }
+.tcap { font-size:9pt; margin:0 0 1mm; text-align:left; break-after:avoid }
+table { border-collapse:collapse; width:100%; font-size:8.3pt; line-height:1.25; text-align:left; hyphens:manual }
+th, td { border-top:0.5px solid #888; border-bottom:0.5px solid #888; padding:1mm 1.5mm; vertical-align:top; word-break:break-word; overflow-wrap:anywhere }
+th { background:#eee; font-weight:bold }
+td:not(:first-child), th:not(:first-child) { text-align:right }
+code { font: 8.8pt Menlo, monospace; background:#f2f2f2; padding:0 1px; overflow-wrap:anywhere }
+pre { font: 8pt/1.3 Menlo, monospace; background:#f6f6f6; padding:2mm; white-space:pre-wrap; break-inside:avoid; overflow-wrap:anywhere }
+pre code { background:none }
+blockquote { margin: 2mm 8mm; font-size:9.5pt; color:#333; border-left:2px solid #999; padding-left:3mm }
+nav.toc { font-size:9.5pt; text-align:left } nav.toc a { color:#111; text-decoration:none }
+nav.toc .t2 { font-weight:bold; margin-top:1.6mm } nav.toc .t3 { margin-left:7mm; font-size:9pt }
+.meta { text-align:center; font-size:11pt; line-height:1.6 } .pagebreak { break-after:page }
+.mathbad { color:#b00; font-family:Menlo,monospace }
+ol { padding-left: 7mm } li { margin-bottom: 1.2mm } ol li { text-align:left; font-size:9.3pt }
+</style></head><body><h1 id="test-title">Test Title</h1>
+<nav class="toc"><h2 class="notoc">Table of Contents</h2><div class="t2"><a href="#1-test">1. Test</a></div></nav>
+
+<h2 id="1-test">1. Test</h2>
+<p>Inline <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">x_1+\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> and display:</p>
+<div class="mathd"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable width="100%"><mtr><mtd width="50%"></mtd><mtd><mrow><mover accent="true"><mi>P</mi><mo>˙</mo></mover><mo>=</mo><mi>r</mi><mi>P</mi><mrow><mo fence="true">(</mo><mn>1</mn><mo>−</mo><mfrac><mi>N</mi><mi>K</mi></mfrac><mo fence="true">)</mo></mrow><mo>−</mo><mi>q</mi><mi>P</mi></mrow></mtd><mtd width="50%"></mtd><mtd><mtext>(1.1)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\dot P = rP\left(1-\frac{N}{K}\right) - qP \tag{1.1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9202em;"></span><span class="mord katex-accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9202em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.0556em;"><span class="mord">˙</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">K</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span></span><span class="katex-tag"><span class="katex-strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="mord text"><span class="mord">(</span><span class="mord"><span class="mord">1.1</span></span><span class="mord">)</span></span></span></span></span></span></div>
+<figure><img src="figures/baseline_trajectories.png" alt="Figure 1.1. Test"><figcaption><strong>Figure 1.1.</strong> Test caption.</figcaption></figure>
+<div class="tbl"><p class="tcap"><strong>Table 1.1.</strong> Caption.</p><table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div></body></html>

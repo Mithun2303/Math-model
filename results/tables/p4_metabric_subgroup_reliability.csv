@@ -1,0 +1,11 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+group,n,events,at_risk_ge_60mo,events_after_60mo,at_risk_ge_120mo,events_after_120mo,at_risk_ge_180mo,events_after_180mo,at_risk_ge_240mo,events_after_240mo,"reliable_5y (>=50 events, >=100 at risk at 60 mo)","reliable_10y (>=50 events, >=100 at risk at 120 mo)","reliable_20y (>=50 events, >=30 at risk at 240 mo)"
+ER (IHC) positive,1735,689,1225,312,738,126,369,37,110,9,True,True,True
+ER (IHC) negative,573,258,314,41,222,16,143,4,49,0,True,True,True
+PAM50: LumA,699,231,535,125,339,63,180,21,61,5,True,True,True
+PAM50: LumB,475,227,299,89,171,29,74,5,27,2,True,True,False
+PAM50: Her2,224,116,126,31,77,8,48,2,18,0,True,False,False
+PAM50: Basal,209,93,116,9,79,4,46,2,13,1,True,False,False
+PAM50: claudin-low,218,68,158,25,102,12,60,6,17,0,True,True,False
+PAM50: Normal,148,65,102,28,61,10,25,1,10,0,True,False,False
+all usable,2380,964,1581,360,984,145,521,41,162,9,True,True,True

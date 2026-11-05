@@ -1,0 +1,316 @@
+patient rows=2509 unique ids=2509; sample rows=2509 unique patients=2509 unique samples=2509
+merge: {'both': 2509, 'left_only': 0, 'right_only': 0}
+
+=== categorical value counts (incl. NaN) ===
+
+RFS_STATUS
+RFS_STATUS
+0:Not Recurred    1486
+1:Recurred        1002
+NaN                 21
+
+OS_STATUS
+OS_STATUS
+1:DECEASED    1144
+0:LIVING       837
+NaN            528
+
+VITAL_STATUS
+VITAL_STATUS
+Living                  837
+Died of Disease         646
+NaN                     529
+Died of Other Causes    497
+
+COHORT
+COHORT
+1      809
+3      763
+2      288
+4      238
+5      170
+7      105
+8       82
+9       40
+NaN     11
+6        3
+
+ER_IHC
+ER_IHC
+Positve     1817
+Negative     609
+NaN           83
+
+ER_STATUS
+ER_STATUS
+Positive    1825
+Negative     644
+NaN           40
+
+HER2_SNP6
+HER2_SNP6
+NEUTRAL    1436
+NaN         529
+GAIN        438
+LOSS        101
+UNDEF         5
+
+HER2_STATUS
+HER2_STATUS
+Negative    1733
+NaN          529
+Positive     247
+
+PR_STATUS
+PR_STATUS
+Positive    1040
+Negative     940
+NaN          529
+
+CLAUDIN_SUBTYPE
+CLAUDIN_SUBTYPE
+LumA           700
+NaN            529
+LumB           475
+Her2           224
+claudin-low    218
+Basal          209
+Normal         148
+NC               6
+
+INTCLUST
+INTCLUST
+NaN     529
+8       299
+3       290
+4ER+    260
+10      226
+7       190
+5       190
+9       146
+1       139
+6        85
+4ER-     83
+2        72
+
+THREEGENE
+THREEGENE
+NaN                      745
+ER+/HER2- Low Prolif     640
+ER+/HER2- High Prolif    617
+ER-/HER2-                309
+HER2+                    198
+
+CHEMOTHERAPY
+CHEMOTHERAPY
+NO     1568
+NaN     529
+YES     412
+
+HORMONE_THERAPY
+HORMONE_THERAPY
+YES    1216
+NO      764
+NaN     529
+
+RADIO_THERAPY
+RADIO_THERAPY
+YES    1173
+NO      807
+NaN     529
+
+BREAST_SURGERY
+BREAST_SURGERY
+MASTECTOMY           1170
+BREAST CONSERVING     785
+NaN                   554
+
+SAMPLE_TYPE
+SAMPLE_TYPE
+Primary    2509
+
+GRADE
+GRADE
+3      1198
+2       976
+1       214
+NaN     121
+
+TUMOR_STAGE
+TUMOR_STAGE
+2      979
+NaN    721
+1      630
+3      144
+0       24
+4       11
+
+SEX
+SEX
+Female    2509
+
+INFERRED_MENOPAUSAL_STATE
+INFERRED_MENOPAUSAL_STATE
+Post    1556
+NaN      529
+Pre      424
+
+CANCER_TYPE_DETAILED
+CANCER_TYPE_DETAILED
+Breast Invasive Ductal Carcinoma             1865
+Breast Mixed Ductal and Lobular Carcinoma     269
+Breast Invasive Lobular Carcinoma             192
+Invasive Breast Carcinoma                     133
+Breast Invasive Mixed Mucinous Carcinoma       25
+Breast                                         21
+Breast Angiosarcoma                             2
+Metaplastic Breast Cancer                       2
+
+=== endpoint semantics ===
+RFS status x vital status:
+ VITAL_STATUS    Died of Disease  Died of Other Causes  Living  NaN
+RFS_STATUS                                                        
+0:Not Recurred                0                   432     745  309
+1:Recurred                  646                    65      92  199
+NaN                           0                     0       0   21
+
+RFS status x OS status:
+ OS_STATUS       0:LIVING  1:DECEASED  NaN
+RFS_STATUS                               
+0:Not Recurred       745         432  309
+1:Recurred            92         711  199
+NaN                    0           1   20
+
+RFS_MONTHS > OS_MONTHS (tol 1e-6): 0 | RFS == OS: 1282 of 1981
+  Living                       n=  837  frac RFS_time==OS_time=0.894  frac RFS event=0.110
+  Died of Disease              n=  646  frac RFS_time==OS_time=0.156  frac RFS event=1.000
+  Died of Other Causes         n=  497  frac RFS_time==OS_time=0.869  frac RFS event=0.131
+
+usable RFS records: 2380 of 2509  (missing time=121, missing status=21)
+RFS_MONTHS describe:
+ count    2380.00
+mean      110.03
+std        77.51
+min         0.00
+5%         10.69
+25%        41.03
+50%       100.05
+75%       169.44
+95%       252.97
+max       389.33
+zero or negative times: 4
+events: 964 censored: 1416
+median potential follow-up (reverse KM) = 157.7 months
+
+events by window (months since time origin):
+         n_records  events  censored
+win                                 
+0-60           795   601.0       194
+60-120         597   215.0       382
+120-180        464   104.0       360
+180-240        358    32.0       326
+>240           162     9.0       153
+
+number still at risk (RFS_MONTHS >= t): {60: 1581, 120: 984, 180: 521, 240: 162}
+
+Overall KM (RFS, as defined by export):
+  horizon_years  n_at_risk  km_event_free     se  ci95_low  ci95_high  cumulative_incidence_1_minus_S
+             5       1581         0.7372 0.0092    0.7191     0.7552                          0.2628
+            10        984         0.6243 0.0106    0.6036     0.6450                          0.3757
+            15        521         0.5441 0.0119    0.5209     0.5673                          0.4559
+            20        162         0.4950 0.0138    0.4679     0.5221                          0.5050
+
+Subgroup KM (event-free fraction at 5/10/20 y; atrisk = n with follow-up >= horizon):
+       variable                 group    n  events  usable   S5y  atrisk5y  S10y  atrisk10y  S20y  atrisk20y
+         ER_IHC              Negative  573     258    True 0.610       314 0.558        222 0.503         49
+         ER_IHC               Positve 1735     689    True 0.775      1225 0.642        738 0.485        110
+         ER_IHC             (missing)   72      17   False 0.846        42 0.737         24 0.610          3
+CLAUDIN_SUBTYPE                 Basal  209      93    True 0.591       116 0.563         79 0.530         13
+CLAUDIN_SUBTYPE                  Her2  224     116    True 0.609       126 0.490         77 0.426         18
+CLAUDIN_SUBTYPE                  LumA  699     231    True 0.844       535 0.733        339 0.539         61
+CLAUDIN_SUBTYPE                  LumB  475     227    True 0.697       299 0.539        171 0.421         27
+CLAUDIN_SUBTYPE                    NC    6       3   False 0.667         4 0.667          3 0.444          0
+CLAUDIN_SUBTYPE                Normal  148      65    True 0.741       102 0.597         61 0.448         10
+CLAUDIN_SUBTYPE           claudin-low  218      68    True 0.795       158 0.718        102 0.581         17
+CLAUDIN_SUBTYPE             (missing)  401     161    True 0.713       241 0.599        152 0.501         16
+       INTCLUST                     1  139      69    True 0.671        86 0.506         50 0.415          5
+       INTCLUST                    10  226      86    True 0.652       139 0.641        104 0.598         19
+       INTCLUST                     2   72      45    True 0.621        42 0.398         20 0.284          5
+       INTCLUST                     3  290      87    True 0.873       236 0.788        156 0.532         22
+       INTCLUST                  4ER+  260      88    True 0.820       189 0.696        105 0.500         17
+       INTCLUST                  4ER-   83      33    True 0.725        54 0.606         33 0.530          8
+       INTCLUST                     5  190     109    True 0.505        84 0.428         51 0.332          8
+       INTCLUST                     6   85      41    True 0.731        55 0.530         32 0.439          7
+       INTCLUST                     7  189      56    True 0.862       145 0.739         94 0.620         22
+       INTCLUST                     8  299     115    True 0.782       218 0.665        139 0.530         23
+       INTCLUST                     9  146      74    True 0.689        92 0.516         48 0.373         10
+       INTCLUST             (missing)  401     161    True 0.713       241 0.599        152 0.501         16
+      THREEGENE ER+/HER2- High Prolif  616     279    True 0.714       405 0.570        232 0.452         40
+      THREEGENE  ER+/HER2- Low Prolif  640     208    True 0.857       498 0.740        311 0.538         48
+      THREEGENE             ER-/HER2-  309     117    True 0.688       195 0.640        133 0.564         23
+      THREEGENE                 HER2+  198     101    True 0.562        99 0.502         66 0.417         12
+      THREEGENE             (missing)  617     259    True 0.716       384 0.589        242 0.481         39
+      HER2_SNP6                  GAIN  438     208    True 0.642       250 0.525        136 0.442         26
+      HER2_SNP6                  LOSS  100      44    True 0.741        68 0.566         35 0.416          6
+      HER2_SNP6               NEUTRAL 1436     548    True 0.772      1019 0.666        659 0.517        114
+      HER2_SNP6                 UNDEF    5       3   False 0.600         3 0.400          2 0.400          0
+      HER2_SNP6             (missing)  401     161    True 0.713       241 0.599        152 0.501         16
+         COHORT                     1  806     301    True 0.749       522 0.630        264 0.479         16
+         COHORT                     2  288     124    True 0.735       206 0.651        165 0.534         68
+         COHORT                     3  762     364    True 0.700       499 0.574        343 0.451         60
+         COHORT                     4  238      80    True 0.765       170 0.674         85 0.591          1
+         COHORT                     5  170      55    True 0.794       118 0.714         83 0.609         17
+         COHORT                     8   76      32    True 0.762        57 0.611         42 0.318          0
+         COHORT                     9   40       8   False 0.734         9 0.490          2 0.490          0
+          GRADE                     1  212      52    True 0.865       169 0.786        107 0.622         17
+          GRADE                     2  931     351    True 0.803       670 0.667        411 0.500         66
+          GRADE                     3 1135     525    True 0.652       668 0.553        418 0.465         76
+          GRADE             (missing)  102      36    True 0.815        74 0.692         48 0.492          3
+   CHEMOTHERAPY                    NO 1567     581    True 0.786      1117 0.669        703 0.523        124
+   CHEMOTHERAPY                   YES  412     222    True 0.576       223 0.481        129 0.389         22
+   CHEMOTHERAPY             (missing)  401     161    True 0.713       241 0.599        152 0.501         16
+HORMONE_THERAPY                    NO  763     318    True 0.699       484 0.619        345 0.520         93
+HORMONE_THERAPY                   YES 1216     485    True 0.769       856 0.634        487 0.464         53
+HORMONE_THERAPY             (missing)  401     161    True 0.713       241 0.599        152 0.501         16
+
+Landmark at 60 mo: 1581 patients event-free & under follow-up at 5 y; subsequent events=360
+  ER-positive (IHC) landmark cohort: n=1225, subsequent events=312
+
+wrote clinical_data_dictionary.csv with 36 fields
+                        field  n_non_missing  n_missing  pct_missing
+                   PATIENT_ID           2509          0         0.00
+LYMPH_NODES_EXAMINED_POSITIVE           2243        266        10.60
+                          NPI           2287        222         8.85
+                  CELLULARITY           1917        592        23.60
+                 CHEMOTHERAPY           1980        529        21.08
+                       COHORT           2498         11         0.44
+                       ER_IHC           2426         83         3.31
+                    HER2_SNP6           1980        529        21.08
+              HORMONE_THERAPY           1980        529        21.08
+    INFERRED_MENOPAUSAL_STATE           1980        529        21.08
+                          SEX           2509          0         0.00
+                     INTCLUST           1980        529        21.08
+             AGE_AT_DIAGNOSIS           2498         11         0.44
+                    OS_MONTHS           1981        528        21.04
+                    OS_STATUS           1981        528        21.04
+              CLAUDIN_SUBTYPE           1980        529        21.08
+                    THREEGENE           1764        745        29.69
+                 VITAL_STATUS           1980        529        21.08
+                   LATERALITY           1870        639        25.47
+                RADIO_THERAPY           1980        529        21.08
+         HISTOLOGICAL_SUBTYPE           2374        135         5.38
+               BREAST_SURGERY           1955        554        22.08
+                   RFS_MONTHS           2388        121         4.82
+                   RFS_STATUS           2488         21         0.84
+                    SAMPLE_ID           2509          0         0.00
+                  CANCER_TYPE           2509          0         0.00
+         CANCER_TYPE_DETAILED           2509          0         0.00
+                    ER_STATUS           2469         40         1.59
+                  HER2_STATUS           1980        529        21.08
+                        GRADE           2388        121         4.82
+                ONCOTREE_CODE           2509          0         0.00
+                    PR_STATUS           1980        529        21.08
+                  SAMPLE_TYPE           2509          0         0.00
+                   TUMOR_SIZE           2360        149         5.94
+                  TUMOR_STAGE           1788        721        28.74
+            TMB_NONSYNONYMOUS           2509          0         0.00

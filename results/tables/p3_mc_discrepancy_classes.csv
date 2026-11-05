@@ -1,0 +1,8 @@
+# phase3 config sha256[:12]=c7e70720ebfc; hypothetical simulated quantities
+class,count,fraction
+TF unstable but never reaches theta (long run): attractor below theta (dormancy/low-burden regime),804,0.1608
+TF stable but event occurs (basin / transient),0,0.0
+attractor N_inf >= theta but no event by 240 (slow: finite-horizon censoring),1872,0.3744
+event by 240 but attractor N_inf < theta (transient exceedance),28,0.0056
+unresolved attractor classification,0,0.0
+event_long == 1 but N_max_long < theta (inconsistency check; must be 0),0,0.0

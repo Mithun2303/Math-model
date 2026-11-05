@@ -1,0 +1,8 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+group,n_with_both_times,n_RFS_equals_OS,fraction_equal,n_RFS_less_than_OS,n_RFS_greater_than_OS (violations),median_OS_minus_RFS_when_less,rationale
+Not Recurred & Living,745,745,1.0,0,0,,both clocks end at the last contact date; equality requires the same origin (does not say WHICH origin)
+Not Recurred & Died of Other Causes,432,432,1.0,0,0,,both clocks end at death by other causes (RFS censored there); equality requires same origin
+Recurred & Died of Disease,646,101,0.1563467492260062,545,0,15.5,equality = death recorded as the first event (recurrence not separately recorded); inequality = recurrence preceded death
+Recurred & Living,92,3,0.03260869565217391,89,0,98.1999999999997,recurrence while alive: RFS < OS expected
+Recurred & Died of Other Causes,65,0,0.0,65,0,49.366666666667,recurrence then death by other cause
+All with both times,1980,1281,0.646969696969697,699,0,20.5666666666667,(for reference)

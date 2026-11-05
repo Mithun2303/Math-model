@@ -1,0 +1,10 @@
+# phase3 config sha256[:12]=c7e70720ebfc; hypothetical simulated quantities
+predictor,observed,TP,FP,FN,TN,accuracy,sensitivity,specificity
+TF unstable (beta < beta_c; k_c-type),event_by_240,2120,2677,0,203,0.4646,1.0,0.07048611111111111
+TF unstable (beta < beta_c; k_c-type),event_long_horizon,3993,804,0,203,0.8392,1.0,0.2015888778550149
+highest stable equilibrium N* >= theta,event_by_240,2098,1933,22,947,0.609,0.9896226415094339,0.32881944444444444
+highest stable equilibrium N* >= theta,event_long_horizon,3970,61,23,946,0.9832,0.9942399198597546,0.9394240317775571
+lowest stable equilibrium N* >= theta,event_by_240,2091,1883,29,997,0.6176,0.9863207547169811,0.34618055555555555
+lowest stable equilibrium N* >= theta,event_long_horizon,3963,11,30,996,0.9918,0.9924868519909842,0.9890764647467726
+attractor reached has N_inf >= theta,event_by_240,2092,1872,28,1008,0.62,0.9867924528301887,0.35
+attractor reached has N_inf >= theta,event_long_horizon,3964,0,29,1007,0.9942,0.9927372902579514,1.0

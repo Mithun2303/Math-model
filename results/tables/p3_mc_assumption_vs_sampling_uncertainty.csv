@@ -1,0 +1,5 @@
+# phase3 config sha256[:12]=c7e70720ebfc; hypothetical simulated quantities
+horizon,assumption_spread_max_minus_min,median_MC_95CI_width,ratio_spread_to_MC_width
+60,0.0362,0.0019117395589494115,18.935633690550173
+120,0.1978,0.016381948556100173,12.07426572746408
+240,0.1512,0.02741402706415441,5.515424627186702

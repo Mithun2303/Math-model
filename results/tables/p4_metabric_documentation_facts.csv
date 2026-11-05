@@ -1,0 +1,13 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+item,status,content,source
+RFS_STATUS definition,"VERIFIED (export metadata, verbatim)","Relapse Free Status (Recurred = cases where there was loco-regional relapse, distant relapse or death-specific death)",cBioPortal meta_clinical_patient / data_clinical_patient header
+RFS_MONTHS definition,"VERIFIED (export metadata, verbatim)",Time until last follow-up or relapse (in months); NO time origin stated,same
+OS_MONTHS definition,"VERIFIED (export metadata, verbatim)",Overall survival in months since initial diagonosis,same
+Composite event includes disease-specific death,VERIFIED (export metadata),yes; all 646 'Died of Disease' are Recurred,export + Phase 1 audit
+Loco-regional vs distant relapse distinguishable,VERIFIED NOT POSSIBLE,not in export,export
+Disease-specific death distinguishable from recurrence,PARTLY (bounds only),see p4_metabric_event_composition: death-first cannot be separated when RFS == OS,this analysis
+RFS origin = diagnosis,NOT VERIFIED,"no documentation in the export, the datahub commit history (Dec 2020 'Added RFS data', 'Update RFS STATUS description'; Apr 2024 'update survival data'; no source named) or the three METABRIC papers' open text","documentation search 2026-11-04 (Europe PMC PMC3440846, PMC4866047, PMC6647838; GitHub API)"
+Rueda 2019 uses surgery as the start of the disease-free state,VERIFIED (paper text),'transition probabilities from surgery ... disease-free/after surgery'; says nothing about the cBioPortal RFS_MONTHS field,PMC6647838
+Common origin of OS and RFS clocks,"INFERENCE (strong, not proof)",see p4_metabric_origin_tests: equality for censored-alive patients,this analysis
+Treatment dates / durations available,VERIFIED NOT AVAILABLE,only binary flags; no dates,export
+Diagnosis-to-treatment interval,NOT AVAILABLE,unknown; remains a nuisance parameter tau,-

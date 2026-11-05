@@ -1,0 +1,25 @@
+# Illustrative mathematical choices, NOT fitted biological estimates.
+# Time unit: months. Burdens are normalised to carrying capacity K.
+parameters:
+  K: 1.0        # carrying capacity (normalised)
+  r: 0.12       # proliferation rate [1/month]
+  q: 0.04       # proliferating -> dormant rate [1/month]
+  a: 0.005      # dormant -> proliferating (reactivation) rate [1/month]
+  delta_D: 0.001  # dormant-cell loss rate [1/month]
+  k: 0.1        # immune killing effectiveness [1/(month * E)]
+  s: 0.02       # baseline immune replenishment [E/month]
+  mu: 0.05      # immune turnover rate [1/month]
+  rho: 0.04     # tumour-stimulated immune expansion [1/month]
+  h: 0.02       # immune-stimulation half-saturation [burden]
+  eta: 0.08     # burden-associated immune suppression [1/(month * burden)]
+initial_conditions:
+  P0: 1.0e-6
+  D0: 1.0e-4
+  E0: null      # null -> tumour-free immune level s/mu
+relapse:
+  N_detect: 0.1   # model-defined detection threshold (fraction of K)
+  horizon: 240.0  # follow-up horizon [months]
+solver:
+  method: DOP853
+  rtol: 1.0e-9
+  atol: 1.0e-12

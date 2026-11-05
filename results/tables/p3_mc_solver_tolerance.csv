@@ -1,0 +1,7 @@
+# phase3 config sha256[:12]=c7e70720ebfc; hypothetical simulated quantities
+setting,event_flips_vs_default_tight_ref,max_abs_dT,failures,P_by_240
+rtol1e-6/atol1e-9,0,0.0067116781712854845,0,0.4216666666666667
+rtol1e-9/atol1e-12 (default),0,0.0,0,0.4216666666666667
+rtol1e-12/atol1e-15,0,9.311558841318401e-06,0,0.4216666666666667
+Radau rtol1e-9,0,9.689989326489012e-06,0,0.4216666666666667
+LSODA rtol1e-9,0,0.0001823766272366356,0,0.4216666666666667

@@ -1,0 +1,4 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+parameter,truth,mean_estimate,bias,rmse,wald_coverage,profile_coverage,median_sd_wald,T_of_beta_monotone_increasing,n_replicates
+m = mean ln(beta),-3.2188758248682006,-3.2195614596425974,-0.0006856347743963287,0.007843873258915045,0.94,0.92,0.006919412888251103,True,50
+ln s (sd of ln beta),-1.2039728043259361,-1.2002028706838095,0.0037699336421266284,0.022188419829385943,0.96,0.96,0.02079776835580413,True,50

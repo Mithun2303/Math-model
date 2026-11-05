@@ -1,0 +1,18 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+quantity,value
+truth_m,-3.2188758248682006
+truth_s,0.3
+truth_tau,12.0
+n,2380
+tau_free: sd(m_hat),0.0237607973885012
+tau_free: sd(s_hat),0.02725628519755536
+tau_free: sd(tau_hat),4.693596534640504
+tau_free: mean bias m,0.001989787074651413
+tau_free: mean bias s,-0.00037746674272479315
+tau_free: mean tau_hat,11.645816009273522
+tau=0 assumed: mean bias m,0.05110027100726877
+tau=0 assumed: mean bias s,-0.061538143287593584
+tau=0 assumed: mean delta nll vs tau-free (2x),5.34869514114777
+"profile (rep 0, tau free): 95% interval for m","[-3.2282662141420104, -3.2282662141420104]  closed within the window: True"
+"profile (rep 0, tau free): 95% interval for ln s","[-1.2846953004548227, -0.9846953004548227]  closed within the window: True"
+"profile (rep 0, tau free): 95% interval for tau","[8.0, 20.0]  closed within the window: True"

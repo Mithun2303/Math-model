@@ -1,0 +1,6 @@
+tag,branch,kind,k,P,D,E,eigs,detail
+baseline,1,"branch point (P=0, zero eigenvalue)",0.28333333333333854,0.0,0.0,0.39999999999999997,"[(-0.05+0j), (-0+0j), (-0.03933333+0j)]",branch meets the tumour-free line
+baseline,1,neutral saddle,0.1849999999999953,0.0,0.0,0.39999999999999997,"[(-0.05+0j), (-0.01536229+0j), (0.01536229+0j)]","a1*a2-a3 = 0 but a2 = -2.360e-04 <= 0 (real pair, no Hopf)"
+baseline,1,neutral saddle,0.08392857142857113,0.0,0.0,0.39999999999999997,"[(-0.05+0j), (-0.00957143+0j), (0.05+0j)]","a1*a2-a3 = 0 but a2 = -2.500e-03 <= 0 (real pair, no Hopf)"
+baseline,2,"branch point (P=0, zero eigenvalue)",0.283333333189286,1.418098919553805e-11,9.453992797025366e-11,0.4000000001573144,"[(-0.05+0j), (-0.03933333+0j), (-0+0j)]",branch meets the tumour-free line
+baseline,2,neutral saddle,0.36839216051320006,-0.005616800670972218,-0.03744533780648145,0.3216702271447541,"[(-0.10083479+0j), (0.01216475+0j), (-0.01216475+0j)]","a1*a2-a3 = 0 but a2 = -1.480e-04 <= 0 (real pair, no Hopf)"

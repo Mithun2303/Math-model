@@ -1,0 +1,11 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+quantity,value
+truth,"m=-3.219, s=0.3, tau=12.0, N0 scale=1"
+sd across replicates: m_hat / s_hat / tau_hat / N0scale_hat,0.055 / 0.045 / 9.2 / 0.66
+mean: m_hat / s_hat / tau_hat / N0scale_hat,-3.230 / 0.310 / 8.7 / 0.99
+"corr(tau_hat, ln N0scale_hat) across replicates",0.884
+"corr(m_hat, tau_hat) across replicates",0.652
+profile rep 0 (tau and N0 scale free): 95% interval for m,"[-3.379, -3.079]  closed within window: True  (window [-3.58, -2.78])"
+profile rep 0 (tau and N0 scale free): 95% interval for ln s,"[-1.649, -0.961]  closed within window: True  (window [-1.77, -0.77])"
+profile rep 0 (tau and N0 scale free): 95% interval for tau,"[-7.188, 46.250]  closed within window: True  (window [-25.00, 70.00])"
+profile rep 0 (tau and N0 scale free): 95% interval for ln N0 scale,"[-1.500, 1.500]  closed within window: False  (window [-1.50, 1.50])"

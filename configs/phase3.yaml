@@ -1,0 +1,92 @@
+# Phase 3 design: ALL ranges/priors below are HYPOTHETICAL mathematical choices centred on the Phase-1/2 baseline.
+# They are not calibrated to patients and must not be read as clinical uncertainty.
+# Model: normalised P-D-e model (src/dormancy/normalized.py), s = mu so the tumour-free immune level is e = E = 1.
+# Time in months. Burdens are fractions of K.
+version: 1
+fixed:               # parameters held fixed unless a design says otherwise
+  K: 1.0
+  mu: 0.05
+  h: 0.02
+  e0: 1.0            # initial immune level relative to tumour-free level
+  r: 0.12            # fixed in the Monte Carlo priors (varied only in global sensitivity / prior P6)
+baseline:            # reference parameter vector (baseline.yaml in normalised form; beta = k s/mu = 0.04)
+  r: 0.12
+  q: 0.04
+  a: 0.005
+  delta_D: 0.001
+  beta: 0.04
+  rho: 0.04
+  eta: 0.08
+  N0: 1.01e-4
+  fD: 0.990099           # D0/(P0+D0) for P0=1e-6, D0=1e-4
+  N_detect: 0.1
+horizon_months: 240.0
+report_horizons_months: [60, 120, 240]      # 5, 10, 20 years
+thresholds: [0.01, 0.02, 0.05, 0.1, 0.2, 0.3, 0.5]   # model-defined, NOT clinical imaging limits
+dormancy_definition:                         # operational, hypothetical (documented in the report)
+  max_abs_dlnN_dt_per_month: 0.01
+  min_dormant_fraction: 0.5
+long_run:
+  horizon_floor_months: 100000.0
+  n_time_constants: 50
+solver: {method: DOP853, rtol: 1.0e-9, atol: 1.0e-12}
+
+# Global-sensitivity ranges (screening ranges, roughly baseline x [1/5, 5]); scale: log | logit | lin
+global_ranges:
+  r:        {lo: 0.03,   hi: 0.30,  scale: log}
+  q:        {lo: 0.01,   hi: 0.16,  scale: log}
+  a:        {lo: 0.001,  hi: 0.025, scale: log}
+  delta_D:  {lo: 2.0e-4, hi: 0.01,  scale: log}
+  beta:     {lo: 0.01,   hi: 0.20,  scale: log}
+  rho:      {lo: 0.01,   hi: 0.16,  scale: log}
+  eta:      {lo: 0.02,   hi: 0.32,  scale: log}
+  N0:       {lo: 1.0e-6, hi: 5.0e-3, scale: log}      # strictly below the smallest threshold (0.01)
+  fD:       {lo: 0.5,    hi: 0.999, scale: logit}
+  N_detect: {lo: 0.02,   hi: 0.30,  scale: log}
+
+# Monte Carlo uncertainty distributions. family: lognormal(median, factor95) = median*exp(N(0,sigma)), sigma=ln(factor95)/1.96
+priors:
+  P1_base:
+    description: "base prior: lognormal around baseline; r, mu, h fixed"
+    q:       {family: lognormal, median: 0.04,   factor95: 3.0}
+    a:       {family: lognormal, median: 0.005,  factor95: 5.0}
+    delta_D: {family: lognormal, median: 0.001,  factor95: 5.0}
+    beta:    {family: lognormal, median: 0.04,   factor95: 3.0}
+    rho:     {family: lognormal, median: 0.04,   factor95: 3.0}
+    eta:     {family: lognormal, median: 0.08,   factor95: 3.0}
+    N0:      {family: lognormal, median: 1.0e-4, factor95: 30.0, lo: 1.0e-7, hi: 5.0e-3}
+    fD:      {family: beta, alpha: 10.0, beta: 1.0}
+  P2_wide:
+    description: "all log-sigmas x1.5; Beta(4,1) for dormant fraction"
+    base: P1_base
+    scale_sigma: 1.5
+    fD:      {family: beta, alpha: 4.0, beta: 1.0}
+  P3_loguniform:
+    description: "log-uniform over the global-sensitivity ranges (r fixed, N_detect fixed)"
+    from_global_ranges: [q, a, delta_D, beta, rho, eta, N0, fD]
+  P4_corr_pos:
+    description: "P1 with Gaussian-copula rank correlation +0.5 on (q,a) and (beta,rho)"
+    base: P1_base
+    copula: [[q, a, 0.5], [beta, rho, 0.5]]
+  P5_corr_neg:
+    description: "P1 with rank correlation -0.5 on (q,a) and (beta,rho)"
+    base: P1_base
+    copula: [[q, a, -0.5], [beta, rho, -0.5]]
+  P6_r_varied:
+    description: "P1 plus lognormal proliferation rate r (median 0.12, factor95 2)"
+    base: P1_base
+    r:       {family: lognormal, median: 0.12, factor95: 2.0}
+  P7_fixed_initial:
+    description: "initial condition fixed at baseline (N0=1.01e-4, fD=0.99): parameter uncertainty only"
+    base: P1_base
+    N0:      {family: fixed, value: 1.01e-4}
+    fD:      {family: fixed, value: 0.990099}
+
+seeds:
+  global_lhs: 20261105
+  sobol: 20261106
+  morris: 20261107
+  mc_base: 20261108
+  mc_assumptions: 20261109
+  basins: 20261110
+  bootstrap: 20261111

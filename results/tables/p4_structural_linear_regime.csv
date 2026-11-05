@@ -1,0 +1,5 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+quantity,value
+"symbolic generating-series rank, linear regime, N-only, unknowns (m,a,q,s,P0,D0)",4
+null dimension,2
+interpretation,N(t)=c+ e^{lam+ t}+c- e^{lam- t}: 4 numbers for 6 unknowns; r and beta enter only as m=r-q-beta*e0

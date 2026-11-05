@@ -1,0 +1,8 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+model,observed,unknowns,rank,n_unknown,null_dim,parameters_with_nonzero_null_component (not individually identifiable)
+full,N,"r,q,a,delta_D,beta,P0,D0,rho,eta",9,9,0,none
+full,PD,"r,q,a,delta_D,beta,P0,D0,rho,eta",9,9,0,none
+logistic only (immune frozen),N,"r,q,a,delta_D,beta,P0,D0",7,7,0,none
+logistic only (immune frozen),PD,"r,q,a,delta_D,beta,P0,D0",7,7,0,none
+"linear (no logistic, immune frozen)",N,"r,q,a,delta_D,beta,P0,D0",4,7,3,"r,q,a,delta_D,beta,P0,D0"
+"linear (no logistic, immune frozen)",PD,"r,q,a,delta_D,beta,P0,D0",6,7,1,"r,beta"

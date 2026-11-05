@@ -1,0 +1,14 @@
+quantity,value
+k_c analytic = (r - q dD/(a+dD)) mu / s,0.2833333333333333
+"k_c from continuation (branch point, tumour-free branch)",0.28333333333333854
+"eigenvalues of J at (x_TF, k_c)","[(-0.05+0j), 0j, (-0.03933333+0j)]"
+"simple zero eigenvalue, other two Re<0",True
+"l.F_k at (x_TF,k_c)  [must be 0]",0.0
+alpha = l.(D_x F_k) w  (transversality),-0.06101694915254235
+"beta = (1/2) l.D2F(w,w)  (nondegeneracy)",-0.6197966101694913
+d(lambda_0)/dk by finite difference,-0.06101694915647271
+k'(0) exact branch slope dk/dP at P=0,-10.157777777777778
+dP/dk centre-manifold = -alpha w_P / beta,-0.09844672938087945
+dP/dk exact = 1/k'(0),-0.09844672938087946
+direction,forward (supercritical)
+transcritical (Sotomayor conditions hold),True

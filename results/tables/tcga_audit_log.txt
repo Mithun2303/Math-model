@@ -1,0 +1,63 @@
+patients: 1084 unique: 1084
+
+DFS_STATUS
+DFS_STATUS
+0:DiseaseFree            858
+NaN                      142
+1:Recurred/Progressed     84
+
+PFS_STATUS
+PFS_STATUS
+0:CENSORED       938
+1:PROGRESSION    145
+NaN                1
+
+OS_STATUS
+OS_STATUS
+0:LIVING      933
+1:DECEASED    151
+
+DSS_STATUS
+DSS_STATUS
+0:ALIVE OR DEAD TUMOR FREE    981
+1:DEAD WITH TUMOR              83
+NaN                            20
+
+SUBTYPE
+SUBTYPE
+BRCA_LumA      499
+BRCA_LumB      197
+BRCA_Basal     171
+NaN            103
+BRCA_Her2       78
+BRCA_Normal     36
+
+HISTORY_NEOADJUVANT_TRTYN
+HISTORY_NEOADJUVANT_TRTYN
+No     1077
+Yes       6
+NaN       1
+
+NEW_TUMOR_EVENT_AFTER_INITIAL_TREATMENT
+NEW_TUMOR_EVENT_AFTER_INITIAL_TREATMENT
+No     785
+NaN    199
+Yes    100
+
+PERSON_NEOPLASM_CANCER_STATUS
+PERSON_NEOPLASM_CANCER_STATUS
+Tumor Free    870
+NaN           123
+With Tumor     91
+
+DFS_STATUS description: 'Disease free status since initial treatment.' | DFS_MONTHS description: 'Disease free (months) since initial treatment.'
+  usable n=941 events=84 median time=25.0 max=281.3 at-risk>=60mo=190 >=120mo=29 >=240mo=4 events after 60mo=10 after 120mo=1
+
+PFS_STATUS description: 'Progression Free Status' | PFS_MONTHS description: 'Progress Free Survival (Months)'
+  usable n=1082 events=145 median time=25.1 max=281.3 at-risk>=60mo=221 >=120mo=33 >=240mo=4 events after 60mo=22 after 120mo=6
+
+OS_STATUS description: 'Overall patient survival status.' | OS_MONTHS description: 'Overall survival in months since initial diagonosis.'
+  usable n=1084 events=151 median time=27.0 max=282.9 at-risk>=60mo=249 >=120mo=42 >=240mo=6 events after 60mo=52 after 120mo=12
+
+DSS_STATUS description: 'The time period usually begins at the time of diagnosis or at the start of treatment and ends at the time of death.' | DSS_MONTHS description: 'The time period (months) usually begins at the time of diagnosis or at the start of treatment and ends at the time of death.'
+  usable n=1063 events=83 median time=26.4 max=282.9 at-risk>=60mo=240 >=120mo=40 >=240mo=6 events after 60mo=22 after 120mo=4

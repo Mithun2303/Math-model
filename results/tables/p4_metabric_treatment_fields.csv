@@ -1,0 +1,7 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+field,n_nonmissing,type
+CHEMOTHERAPY,1980,"binary flag / category (no date, no duration)"
+HORMONE_THERAPY,1980,"binary flag / category (no date, no duration)"
+RADIO_THERAPY,1980,"binary flag / category (no date, no duration)"
+BREAST_SURGERY,1955,"binary flag / category (no date, no duration)"
+AGE_AT_DIAGNOSIS,2498,age at diagnosis (years)

@@ -1,0 +1,10 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+quantity,value
+best-fit nll,4755.660951167749
+"estimated (m_beta, ln s_beta, m_r, ln s_r)",[-2.734 -1.626 -1.906 -2.159]
+truth,[-3.219 -1.204 -2.12  -1.897]
+range of m_beta with profile delta-chi2 < 3.84 (grid truth+-0.8),-3.619 .. -2.619
+n grid points within 95% (of 17) -> ridge,11
+sup-norm |F_hat - F_true| for the event-time CDF at the best fit,0.029509891874372474
+max |F along the 95% ridge - F_best| (event-time CDF barely moves along the ridge),0.00876504443633444
+same 1-D (r known) profile: n points within 95% of 17 (window +-4 sd),7

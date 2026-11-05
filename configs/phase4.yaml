@@ -1,0 +1,61 @@
+# Phase 4 design: identifiability, synthetic validation, clinical endpoint mapping.
+# Everything here is SYNTHETIC / HYPOTHETICAL. Ground truths are illustrative parameter sets from Phases 2-3; the
+# observation model (noise, detection limit, schedules, signal scale) is an ASSUMPTION, not a clinical measurement model.
+version: 1
+model:                  # normalised P-D-e model (s = mu, tumour-free e = 1); K = 1 (burden measured in units of K)
+  K: 1.0
+  mu: 0.05
+  h: 0.02
+
+ground_truths:          # parameter dicts (normalised); N0 total initial burden, fD dormant fraction, e0 initial immune level
+  G1_baseline:     {r: 0.12, q: 0.04, a: 0.005, delta_D: 0.001, beta: 0.04,  rho: 0.04, eta: 0.08, N0: 1.01e-4, fD: 0.990099, e0: 1.0, note: "NZ-only regime; first crossing of 0.1 near 220 months"}
+  G2_fast:         {r: 0.12, q: 0.04, a: 0.005, delta_D: 0.001, beta: 0.02,  rho: 0.04, eta: 0.08, N0: 1.01e-4, fD: 0.990099, e0: 1.0, note: "weak killing, early crossing"}
+  G3_slow:         {r: 0.12, q: 0.04, a: 0.005, delta_D: 0.001, beta: 0.0567, rho: 0.04, eta: 0.08, N0: 1.01e-4, fD: 0.990099, e0: 1.0, note: "slow; no crossing of 0.1 within 240 months"}
+  G4_controlled:   {r: 0.12, q: 0.04, a: 0.005, delta_D: 0.001, beta: 0.15,  rho: 0.04, eta: 0.08, N0: 1.0e-3,  fD: 0.990099, e0: 1.0, note: "beta > beta_c: tumour-free stable, residual decays"}
+  G5_lowdormant:   {r: 0.12, q: 0.04, a: 0.005, delta_D: 0.001, beta: 0.04,  rho: 0.04, eta: 0.08, N0: 1.01e-4, fD: 0.10,     e0: 1.0, note: "baseline with mostly proliferating initial residual"}
+  G6_stimulated:   {r: 0.12, q: 0.0015841984, a: 0.3062386609, delta_D: 0.001, beta: 0.06, rho: 0.2404914173, eta: 1.6373830589, N0: 0.0328, fD: 0.493, e0: 0.606, note: "two-nonzero regime, low-basin start: crosses 0.05 then falls back (Phase 3 fixture)"}
+
+observation:            # ASSUMPTIONS about a hypothetical burden-proxy signal
+  base:
+    signal_scale_c: 1.0           # signal = c * N; c known in the base case, unknown in the 'unknown scale' variants
+    noise_sigma_ln: 0.10          # multiplicative log-normal noise, natural-log sd (about 10% CV)
+    lod: 1.0e-6                   # limit of detection of the signal (values below are left-censored)
+    schedule_months: 6.0          # observation every 6 months
+    follow_up_months: 240.0
+    detection_threshold: 0.1      # relapse is diagnosed when N reaches this; observation of the untreated course stops there
+  noise_levels: [0.05, 0.10, 0.25, 0.50]
+  schedules_months: [1.0, 3.0, 6.0, 12.0, 24.0]
+  follow_ups_months: [60.0, 120.0, 240.0]
+
+fitting:
+  free_parameters: [r, q, a, delta_D, beta, rho, eta]        # mu, h, K fixed (documented); initial state: N0, fD fitted when 'ic_unknown'
+  bounds_log_factor: 30.0         # bounds: truth x / 30 .. truth x 30 (hypothetical broad bounds, all on log scale)
+  n_starts: 8
+  n_replicates: 6
+  generate_solver: {method: Radau, rtol: 1.0e-12, atol: 1.0e-15}   # data generated with a different solver than the fitter
+  fit_solver: {method: DOP853, rtol: 1.0e-9, atol: 1.0e-12}
+  profile_grid_log_factor: 10.0
+  profile_points: 15
+  chi2_95_1dof: 3.841
+
+identifiability:
+  prime: 2305843009213693951      # 2^61 - 1
+  max_order: 30
+  n_random_points: 3
+  seed: 20261201
+
+# Pre-registered decision criteria for the clinical feasibility decision (written BEFORE the results were known)
+decision_criteria:
+  structural_identifiable: "full generic rank of the series identifiability matrix modulo a large prime at >= 3 random points with rank flat over the last 6 Taylor orders (proves generic LOCAL structural identifiability; not global)"
+  practically_identifiable: "95% profile-likelihood interval finite on BOTH sides within the bounds (Raue et al. 2009) in >= 80% of noise replicates, AND median |log recovery error| <= ln(1.5), at the benchmark condition (sigma 0.10, 6-month schedule, 240-month follow-up truncated at detection)"
+  A_descriptive: "suitable iff the endpoint is documented, usable cohort is large (events >= 500) and uncertainty is stated; comparison labelled as consistency, not validation"
+  B_exploratory_population_calibration: "suitable ONLY IF at least one combination of population parameters has a finite 95% profile interval from interval-censored event times when the time origin offset tau and the detection threshold are left FREE as nuisances (sample size and visit pattern comparable to the clinical endpoint), AND that combination is not a reparametrisation of the nuisance (equivalence-map distance exceeds sampling noise). Otherwise stop at A."
+  C_mechanistic_calibration: "unsuitable iff the mechanistic parameters (r, beta, q, a, rho, eta, initial composition) are not practically identifiable from burden-type or event-type data under the stated observation models"
+
+seeds:
+  synthetic_data: 20261202
+  multistart: 20261203
+  profile: 20261204
+  populations: 20261205
+  endpoint_mapping: 20261206
+  bootstrap: 20261207

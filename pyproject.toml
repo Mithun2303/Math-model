@@ -1,0 +1,17 @@
+[project]
+name = "dormancy"
+version = "0.1.0"
+description = "Mathematical modelling of tumour dormancy and relapse (proliferating/dormant/immune ODE)"
+requires-python = ">=3.11"
+dependencies = ["numpy", "scipy", "sympy", "pandas", "matplotlib", "pyyaml"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

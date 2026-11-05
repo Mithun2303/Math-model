@@ -1,0 +1,20 @@
+# phase3 config sha256[:12]=c7e70720ebfc; hypothetical simulated quantities
+case,threshold,attractor,n_starts_below_threshold,event_by_240,no_event_by_240,transient_exceedance_by_240
+A,0.1,TF,2071,14,2057,14
+A,0.1,NZ,1,1,0,0
+A,0.3,TF,2288,0,2288,0
+A,0.3,NZ,192,153,39,0
+A,0.5,TF,2301,0,2301,0
+A,0.5,NZ,389,290,99,0
+B1,0.1,NZ-low,2071,51,2020,19
+B1,0.1,NZ-high,1,1,0,0
+B1,0.3,NZ-low,2331,0,2331,0
+B1,0.3,NZ-high,149,57,92,0
+B1,0.5,NZ-low,2346,0,2346,0
+B1,0.5,NZ-high,344,12,332,0
+B2,0.1,NZ-low,1895,8,1887,8
+B2,0.1,NZ-high,177,177,0,0
+B2,0.01,NZ-low,1325,262,1063,262
+B2,0.01,NZ-high,0,0,0,0
+B2,0.3,NZ-low,1895,0,1895,0
+B2,0.3,NZ-high,585,585,0,0

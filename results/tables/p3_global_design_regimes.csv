@@ -1,0 +1,6 @@
+# phase3 config sha256[:12]=c7e70720ebfc; hypothetical simulated quantities
+reg_regime,count
+NZ only,2538
+TF only,1297
+NZ + NZ,111
+TF + NZ,54

@@ -1,0 +1,26 @@
+# Normalised model configuration (Phase 2, M1). Mathematically equivalent to configs/baseline.yaml
+# with s = mu (E = e) and beta = k*s/mu = 0.1*0.02/0.05 = 0.04.
+# Illustrative mathematical choices, NOT fitted biological estimates.
+# Time unit: months. Burdens are normalised to carrying capacity K; e is dimensionless (tumour-free level = 1).
+parameters:
+  K: 1.0
+  r: 0.12
+  q: 0.04
+  a: 0.005
+  delta_D: 0.001
+  beta: 0.04      # effective immune killing k*s/mu [1/month]; critical value beta_c = r - q*delta_D/(a+delta_D) = 0.11333
+  mu: 0.05
+  rho: 0.04
+  h: 0.02
+  eta: 0.08
+initial_conditions:
+  P0: 1.0e-6
+  D0: 1.0e-4
+  e0: 1.0         # tumour-free immune level
+relapse:
+  N_detect: 0.1
+  horizon: 240.0
+solver:
+  method: DOP853
+  rtol: 1.0e-9
+  atol: 1.0e-12

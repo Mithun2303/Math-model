@@ -1,0 +1,10 @@
+# phase4 config sha256[:12]=cfb17cec5c80; synthetic/hypothetical unless the file name says metabric
+quantity,value
+individuals pooled,15000
+runs used,"p3_mc_P1_samples.csv, p3_mc_P1_base_run_B_samples.csv, p3_mc_P1_batches_run_C_samples.csv"
+no crossing within 240 mo,8455
+early crossers (T < 80),106
+late crossers (160 < T <= 240),2894
+events recorded as transient (cross then fall back within 240 mo),74
+F(60) / F(120) / F(240) first crossing,0.0005 / 0.0910 / 0.4363
+F(60) / F(120) / F(240) persistent-only,0.0005 / 0.0888 / 0.4314

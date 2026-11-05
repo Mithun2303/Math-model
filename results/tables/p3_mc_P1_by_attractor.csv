@@ -1,0 +1,6 @@
+# phase3 config sha256[:12]=c7e70720ebfc; hypothetical simulated quantities
+attractor,n,P_by_240,event_long_frac,transient_frac_of_events
+NZ,4718,0.4463755828740992,0.8401865197117423,0.011870845204178538
+NZ-high,3,1.0,1.0,0.0
+NZ-low,76,0.14473684210526316,0.34210526315789475,0.36363636363636365
+TF,203,0.0,0.0,
