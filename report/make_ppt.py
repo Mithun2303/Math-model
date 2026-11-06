@@ -30,7 +30,14 @@ def text_slide(title, bul):
     s = base(title); tb(s, 0.7, 1.4, 11.9, 5.6, ['\u2022 ' + b for b in bul], 22); return s
 
 
+KEEP = {'baseline_trajectories', 'fig_B_stability_bifurcation_diagram', 'fig_p3_02_global_sensitivity_ranking',
+        'fig_p3_07_cumulative_relapse_probability', 'fig_p4_11_structural_vs_practical_identifiability',
+        'fig_p5_01_metabric_km_overall', 'fig_p5_05_model_vs_metabric', 'fig_p5_06_consistency_envelope'}
+
+
 def img_slide(title, img, bul, split=0.64):
+    if img not in KEEP:
+        return text_slide(title, bul)
     s = base(title)
     im = Image.open(F + img + '.png'); ar = im.width / im.height
     mw = 13.333 * split - 0.6; mh = 5.9
@@ -72,4 +79,4 @@ img_slide('Model vs METABRIC (descriptive)', 'fig_p5_05_model_vs_metabric', ['Pr
 img_slide('Consistency envelope', 'fig_p5_06_consistency_envelope', ['5 y: simulated incidence below the METABRIC CI in all 1,764 scenarios', '10 y below in 98.8%; late events more back-loaded in all scenarios', '20-y value inside the CI in only 11.1% of scenarios'])
 img_slide('Phase 5 summary', 'fig_p5_10_clinical_comparison_summary', ['The model has no treatment era or early-recurrence mechanism, so early mismatch is expected', 'Neither validation nor refutation of the mechanism', 'Threshold and time-origin choices change magnitude but not the qualitative gaps'])
 text_slide('Conclusions and limitations', ['Analytic stability boundary and bifurcation structure of the P-D-E model established', 'Relapse-time distributions are strongly back-loaded and prior- and threshold-dependent', 'Total-burden data cannot identify the P/D split; mechanistic calibration is not supported', 'METABRIC comparison is descriptive: undocumented RFS origin, composite event, curve ends at about 230 months', 'Future work: treatment-era and early-recurrence mechanisms, stochastic extinction, data with dormancy markers', '164 automated tests pass; outputs reproducible from the repository'])
-prs.save('D:/Math-model/report/Project_Presentation.pptx'); print(len(prs.slides))
+prs.save('D:/Math-model/report/Project_Presentation_v2.pptx'); print(len(prs.slides))
