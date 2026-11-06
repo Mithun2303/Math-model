@@ -1,0 +1,17 @@
+# phase5 descriptive METABRIC; raw patient file sha256[:12]=830fb39fee56; RFS time origin undocumented; not model validation
+check,value,expected,pass,note
+patients in export,2509,2509,True,
+RFS_STATUS levels,0:Not Recurred=1486; 1:Recurred=1002; nan=21,"0:Not Recurred, 1:Recurred, missing",True,event indicator = leading digit
+events among usable (status startswith '1'),964,964,True,
+usable (status and time non-missing),2380,2380,True,Phase 1/4 cohort
+RFS_STATUS missing,21,21,True,
+RFS_MONTHS missing,121,,True,excluded from the usable cohort
+negative RFS_MONTHS among usable,0,0,True,
+"RFS_MONTHS == 0 among usable (kept, as in Phase 1)",4,,True,zero-time records never enter a risk set after t = 0; kept so the cohort equals the Phase 1/4 cohort
+RFS > OS among patients with both times,0,0,True,consistent with a common clock; does not identify the RFS origin
+max RFS_MONTHS among usable,389.33,,True,months
+events with RFS_MONTHS > 240,9,,True,horizons censor administratively
+cumulative incidence at 5 y vs Phase 1 table,0.2628,0.2628,True,|diff| = 2.3e-05
+cumulative incidence at 10 y vs Phase 1 table,0.3757,0.3757,True,|diff| = 2.6e-05
+cumulative incidence at 15 y vs Phase 1 table,0.4559,0.4559,True,|diff| = 1.5e-06
+cumulative incidence at 20 y vs Phase 1 table,0.505,0.505,True,|diff| = 2.3e-05

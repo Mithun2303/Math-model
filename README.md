@@ -43,3 +43,12 @@ Phase 4 (identifiability, synthetic validation, endpoint mapping; see `PHASE_4_S
 - `src/dormancy/identifiability.py` (exact series/AD identifiability), `observation.py`, `synthetic_validation.py`, `endpoint_mapping.py`. All Phase 4 results are SYNTHETIC; no clinical calibration was performed.
 
 Not yet built: clinical (METABRIC) comparison, parameter fitting, stochastic (birth-death-switching) model, Streamlit app.
+
+
+Phase 5 (descriptive METABRIC survival analysis and pre-registered model-vs-METABRIC consistency; see `PHASE_5_SUMMARY.md`, `report/phase_5_clinical_comparison.md`; design and hash in `configs/phase5.yaml`):
+
+    python experiments/phase5_metabric_km.py      # METABRIC KM, subgroups, log-rank, landmark, late hazard (Figs 1-3)
+    python experiments/model_consistency.py       # needs Phase 3 Monte Carlo samples; refuses to run if configs/phase5.yaml hash changed (Figs 4-9)
+    python experiments/phase5_figures.py          # Fig 10 summary
+
+- `src/dormancy/km_descriptive.py`, `clinical_comparison.py`. No parameter is fitted to METABRIC; all results are descriptive.

@@ -4,9 +4,10 @@ Run: .venv/bin/python experiments/phase5_metabric_km.py
 Reads the raw cBioPortal export (never modified).  Endpoint: RFS_STATUS/RFS_MONTHS as exported (composite of loco-regional or
 distant relapse and disease-specific death; time origin undocumented -- see results/p5_rfs_time_origin_note.md).
 Outputs: results/tables/p5_km_overall.csv (written FIRST), p5_km_subgroups.csv, p5_logrank_subgroups.csv, p5_landmark_5y.csv,
-results/p5_rfs_time_origin_note.md, figures fig_p5_01_metabric_km_overall.png, fig_p5_02_metabric_km_subgroups.png.
+results/p5_rfs_time_origin_note.md, p5_clinical_coding_checks.csv, p5_late_recurrence_hazard.csv, figures fig_p5_01_metabric_km_overall.png, fig_p5_02_er_positive_vs_negative.png, fig_p5_03_molecular_subgroups.png.
 """
 import hashlib
+from scipy import stats
 import sys
 import textwrap
 from pathlib import Path
@@ -64,6 +65,7 @@ def main():
     d = load()
     t, e = d.RFS_MONTHS.to_numpy(), d.event.to_numpy()
     print(f"usable n={len(d)} events={int(e.sum())}")
+    coding_checks(d)
 
     # ---------------------------------------------------------------- 1. overall (written first)
     rows = []
@@ -150,9 +152,11 @@ def main():
     save(lm, "p5_landmark_5y")
     print(lm[lm.reported][["group", "ahead_years", "n_event_free_at_landmark", "n_events_in_window", "cond_cum_inc", "ci_lo", "ci_hi"]].round(3).to_string())
 
+    late_hazard(d, masks)
     write_note(d, overall, dif)
     fig_overall(t, e, overall)
-    fig_subgroups(d, t, e, masks, reliable)
+    fig_er(d, t, e, masks, lr)
+    fig_pam50(t, e, masks, reliable)
 
 
 # ---------------------------------------------------------------------------------------------------------------- note
@@ -213,41 +217,149 @@ def fig_overall(t, e, overall):
     fig.savefig(FIG / "fig_p5_01_metabric_km_overall.png"); plt.close(fig)
 
 
-def fig_subgroups(d, t, e, masks, reliable):
-    fams = [("ER (IHC) status", ["ER (IHC) positive", "ER (IHC) negative"], [CB["blue"], CB["verm"]]),
-            ("PAM50 / claudin-low subtype", [g for g in masks if g.startswith("PAM50")],
-             [CB["blue"], CB["orange"], CB["green"], CB["black"], CB["purple"], CB["sky"]])]
-    fig, axes = plt.subplots(1, 2, figsize=(11.0, 5.2), sharey=True)
-    fig.subplots_adjust(left=0.07, right=0.985, top=0.88, bottom=0.30, wspace=0.08)
+def _short(g):
+    return g.replace("PAM50: ", "").replace("ER (IHC) ", "ER ")
+
+
+def _at_risk_rows(ax, t, strata, years, colors, maxy=None):
+    """Number-at-risk rows under an axis: strata = {label: boolean mask}; maxy = {label: last horizon shown}."""
+    ax.set_ylim(-0.5, len(strata) - 0.5); ax.set_yticks([]); ax.grid(False)
+    ax.spines["left"].set_visible(False)
+    for r, (lab, m) in enumerate(strata.items()):
+        row = len(strata) - 1 - r
+        ax.text(-0.015, row, lab, transform=ax.get_yaxis_transform(), ha="right", va="center", fontsize=8, color=colors[r], fontweight="bold")
+        for y in years:
+            if maxy is None or y <= maxy[lab]:
+                ax.text(y, row, f"{int(np.sum(t[m] >= 12 * y)):,}", ha="center", va="center", fontsize=8.5)
+            else:
+                ax.text(y, row, "–", ha="center", va="center", fontsize=8.5, color=INK2)
+
+
+def fig_er(d, t, e, masks, lr):
+    pos, neg = masks["ER (IHC) positive"].to_numpy(), masks["ER (IHC) negative"].to_numpy()
+    fig = plt.figure(figsize=(7.8, 6.4))
+    gs = fig.add_gridspec(2, 1, height_ratios=[4.2, 1], hspace=0.12, left=0.17, right=0.97, top=0.93, bottom=0.17)
+    ax = fig.add_subplot(gs[0]); axt = fig.add_subplot(gs[1], sharex=ax)
+    for m, lab, c, ls in ((pos, "ER-positive (IHC)", CB["blue"], "-"), (neg, "ER-negative (IHC)", CB["verm"], "--")):
+        tc, S, lo, hi = km_curve(t[m], e[m], t_max=240)
+        ax.step(tc / 12, 1 - S, where="post", color=c, ls=ls, lw=2, label=f"{lab} (n = {int(m.sum()):,}; {int(e[m].sum())} events)")
+        ax.fill_between(tc / 12, 1 - hi, 1 - lo, step="post", color=c, alpha=0.15, lw=0)
+    sel = lr[(lr.family == "ER") & (lr.test == "global")].set_index("horizon_years")
+    parts = []
+    for y in (5, 10, 20):
+        if y in sel.index and np.isfinite(sel.loc[y, "p_raw"]):
+            p = sel.loc[y, "p_raw"]
+            parts.append(f"{y} y: p {'< 0.001' if p < 1e-3 else '= %.3f' % p}")
+    ax.text(0.98, 0.04, "Log-rank (censored at horizon) " + "; ".join(parts), transform=ax.transAxes, ha="right", va="bottom", fontsize=8, color=INK2)
+    ax.set_ylabel("Cumulative incidence of RFS event (1 − S)"); ax.set_ylim(0, 0.85); ax.legend(loc="upper left")
+    ax.set_title("METABRIC RFS event by ER (IHC) status, 0–20 years (95% log-log CI)")
+    plt.setp(ax.get_xticklabels(), visible=False)
+    _at_risk_rows(axt, t, {"ER+": pos, "ER−": neg}, range(0, 21, 5), [CB["blue"], CB["verm"]])
+    axt.set_xlabel("Years since the RFS time origin (undocumented in the export)"); axt.set_xlim(-0.5, 20.5)
+    style_fig_footer(fig, "At-risk counts at 0, 5, 10, 15, 20 y. Association only (treatment, stage, grade not adjusted). Composite endpoint (relapse or "
+                          "disease-specific death). " + CLIN)
+    fig.savefig(FIG / "fig_p5_02_er_positive_vs_negative.png"); plt.close(fig)
+
+
+def fig_pam50(t, e, masks, reliable):
+    gl = [g for g in masks if g.startswith("PAM50")]
+    cols = [CB["blue"], CB["orange"], CB["green"], CB["black"], CB["purple"], CB["sky"]]
     ls = ["-", "--", "-.", ":", "-", "--"]
-    for ax, (title, gl, cols) in zip(axes, fams):
-        for i, g in enumerate(gl):
-            maxy = max([y for y in RELIABLE_HORIZONS if reliable[(g, y)]], default=0)
-            if maxy == 0:
-                continue
-            m = masks[g].to_numpy()
-            tc, S, lo, hi = km_curve(t[m], e[m], t_max=12 * maxy)
-            ax.step(tc / 12, 1 - S, where="post", color=cols[i], ls=ls[i], lw=1.8, label=f"{g.replace('PAM50: ', '').replace('ER (IHC) ', 'ER ')} (reliable to {maxy} y)")
-            ax.fill_between(tc / 12, 1 - hi, 1 - lo, step="post", color=cols[i], alpha=0.10, lw=0)
-            ax.plot([tc[-1] / 12], [1 - S[-1]], "o", color=cols[i], ms=4)
-        ax.set_title(title); ax.set_xlabel("Years since the RFS time origin (undocumented)"); ax.set_xlim(0, 20.3)
-        ax.legend(loc="upper left", fontsize=7.5)
-    axes[0].set_ylabel("Cumulative incidence of RFS event"); axes[0].set_ylim(0, 0.9)
-    # at-risk tables below
-    for ax, (title, gl, cols) in zip(axes, fams):
-        txt = ["At risk (5 / 10 / 15 / 20 y):"]
-        for g in gl:
-            m = masks[g].to_numpy()
-            nr = []
-            for y in (5, 10, 15, 20):
-                ok = y == 15 and any(reliable[(g, yy)] for yy in (20,)) or (y != 15 and reliable[(g, y)])
-                nr.append(f"{int(np.sum(t[m] >= 12 * y))}" if ok else "–")
-            txt.append(f"{g.replace('PAM50: ', '').replace('ER (IHC) ', 'ER ')}: " + " / ".join(nr))
-        ax.text(0.0, -0.20, "\n".join(txt), transform=ax.transAxes, fontsize=7.2, va="top", family="monospace")
-    style_fig_footer(fig, "Curves are drawn only up to the longest horizon (5, 10 or 20 y) at which the Phase 4 reliability criterion holds "
-                          "(≥50 events in the group; ≥100 at risk at 5 and 10 y, ≥30 at 20 y); '–' = criterion not met. Strata overlap between panels; "
-                          "differences are associations, not mechanisms. " + CLIN)
-    fig.savefig(FIG / "fig_p5_02_metabric_km_subgroups.png"); plt.close(fig)
+    fig = plt.figure(figsize=(8.4, 6.8))
+    gs = fig.add_gridspec(2, 1, height_ratios=[4, 1.5], hspace=0.12, left=0.20, right=0.97, top=0.93, bottom=0.17)
+    ax = fig.add_subplot(gs[0]); axt = fig.add_subplot(gs[1], sharex=ax)
+    strata, colors, maxy = {}, [], {}
+    for i, g in enumerate(gl):
+        my = max([y for y in RELIABLE_HORIZONS if reliable[(g, y)]], default=0)
+        if my == 0:
+            continue
+        m = masks[g].to_numpy()
+        tc, S, lo, hi = km_curve(t[m], e[m], t_max=12 * my)
+        ax.step(tc / 12, 1 - S, where="post", color=cols[i], ls=ls[i], lw=1.9, label=f"{_short(g)} (n = {int(m.sum())}; shown to {my} y)")
+        ax.fill_between(tc / 12, 1 - hi, 1 - lo, step="post", color=cols[i], alpha=0.10, lw=0)
+        strata[_short(g)] = m; colors.append(cols[i]); maxy[_short(g)] = my
+    ax.set_ylabel("Cumulative incidence of RFS event (1 − S)"); ax.set_ylim(0, 0.9); ax.legend(loc="upper left", fontsize=7.5)
+    ax.set_title("METABRIC RFS event by PAM50 / claudin-low subtype (reliable strata and horizons only)")
+    plt.setp(ax.get_xticklabels(), visible=False)
+    _at_risk_rows(axt, t, strata, range(0, 21, 5), colors, maxy)
+    axt.set_xlabel("Years since the RFS time origin (undocumented in the export)"); axt.set_xlim(-0.5, 20.5)
+    style_fig_footer(fig, "Curves end at the longest horizon (5, 10 or 20 y) at which the Phase 4 reliability criterion holds (>=50 events in group; >=100 at risk at "
+                          "5 and 10 y; >=30 at 20 y); '–' = not shown. NC (n = 6) and missing subtype omitted. Unadjusted associations. " + CLIN)
+    fig.savefig(FIG / "fig_p5_03_molecular_subgroups.png"); plt.close(fig)
+
+
+def coding_checks(d):
+    raw = pd.read_csv(RAW / "data_clinical_patient.txt", sep="\t", comment="#", dtype=str)
+    st = raw.RFS_STATUS.value_counts(dropna=False)
+    rfs = pd.to_numeric(raw.RFS_MONTHS, errors="coerce")
+    os_ = pd.to_numeric(raw.OS_MONTHS, errors="coerce")
+    both = rfs.notna() & os_.notna()
+    ph1 = pd.read_csv(TAB / "metabric_km_overall.csv", comment="#")
+    rows = []
+
+    def add(name, value, expected, ok, note=""):
+        rows.append({"check": name, "value": value, "expected": expected, "pass": bool(ok), "note": note})
+    add("patients in export", len(raw), 2509, len(raw) == 2509)
+    add("RFS_STATUS levels", "; ".join(f"{k}={v}" for k, v in st.items()), "0:Not Recurred, 1:Recurred, missing",
+        set(raw.RFS_STATUS.dropna().unique()) == {"0:Not Recurred", "1:Recurred"}, "event indicator = leading digit")
+    add("events among usable (status startswith '1')", int(d.event.sum()), 964, int(d.event.sum()) == 964)
+    add("usable (status and time non-missing)", len(d), 2380, len(d) == 2380, "Phase 1/4 cohort")
+    add("RFS_STATUS missing", int(raw.RFS_STATUS.isna().sum()), 21, int(raw.RFS_STATUS.isna().sum()) == 21)
+    add("RFS_MONTHS missing", int(rfs.isna().sum()), "", True, "excluded from the usable cohort")
+    add("negative RFS_MONTHS among usable", int((d.RFS_MONTHS < 0).sum()), 0, (d.RFS_MONTHS < 0).sum() == 0)
+    add("RFS_MONTHS == 0 among usable (kept, as in Phase 1)", int((d.RFS_MONTHS == 0).sum()), "", True, "zero-time records never enter a risk set after t = 0; kept so the cohort equals the Phase 1/4 cohort")
+    n_viol = int((rfs[both] > os_[both] + 1e-6).sum())
+    add("RFS > OS among patients with both times", n_viol, 0, n_viol == 0, "consistent with a common clock; does not identify the RFS origin")
+    add("max RFS_MONTHS among usable", round(float(d.RFS_MONTHS.max()), 2), "", True, "months")
+    add("events with RFS_MONTHS > 240", int(((d.RFS_MONTHS > 240) & (d.event == 1)).sum()), "", True, "horizons censor administratively")
+    tt, ee = d.RFS_MONTHS.to_numpy(), d.event.to_numpy()
+    for y in HORIZONS:
+        r = ph1[ph1.horizon_years == y].iloc[0]
+        ci = km_point(tt, ee, 12 * y)["cum_inc"]
+        add(f"cumulative incidence at {y} y vs Phase 1 table", round(ci, 4), round(r.cumulative_incidence_1_minus_S, 4),
+            abs(ci - r.cumulative_incidence_1_minus_S) < 5e-4, f"|diff| = {abs(ci - r.cumulative_incidence_1_minus_S):.1e}")
+    df = pd.DataFrame(rows)
+    save(df, "p5_clinical_coding_checks")
+    print(df[["check", "value", "expected", "pass"]].to_string())
+    assert df["pass"].all(), "coding check failed"
+
+
+def poisson_ci(k, T, conf=0.95):
+    a = 1 - conf
+    lo = 0.0 if k == 0 else stats.chi2.ppf(a / 2, 2 * k) / 2
+    hi = stats.chi2.ppf(1 - a / 2, 2 * k + 2) / 2
+    return lo / T, hi / T
+
+
+def late_hazard(d, masks):
+    t = d.RFS_MONTHS.to_numpy(); e = d.event.to_numpy()
+    wins = [(0, 5), (5, 10), (10, 15), (15, 20), (5, 20)]
+    groups = {"all usable": np.ones(len(d), bool), "ER positive": masks["ER (IHC) positive"].to_numpy(), "ER negative": masks["ER (IHC) negative"].to_numpy()}
+    rows = []
+    for g, m in groups.items():
+        for a, b in wins:
+            lo_m, hi_m = 12 * a, 12 * b
+            py = float(np.sum(np.clip(np.minimum(t[m], hi_m) - lo_m, 0, None))) / 12
+            ev = int(np.sum(m & (e == 1) & (t > lo_m) & (t <= hi_m)))
+            n0 = int(np.sum(t[m] > lo_m))
+            lo, hi = poisson_ci(ev, py) if py > 0 else (np.nan, np.nan)
+            rows.append({"group": g, "window_years": f"{a}-{b}",
+                         "note": "5-y landmark window: conditional on being event-free and observed at 5 y" if (a, b) == (5, 20) else "",
+                         "n_under_observation_at_window_start": n0, "events": ev, "person_years": py,
+                         "hazard_per_100py": 100 * ev / py if py > 0 else np.nan, "ci_lo_per_100py": 100 * lo, "ci_hi_per_100py": 100 * hi})
+    out = pd.DataFrame(rows)
+    save(out, "p5_late_recurrence_hazard")
+    print(out.round(3).to_string())
+    w = pd.read_csv(TAB / "metabric_events_by_window.csv", comment="#").iloc[:4]
+    a = out[out.group == "all usable"].set_index("window_years")
+    keys = ("0-5", "5-10", "10-15", "15-20")
+    cmp = pd.DataFrame({"window_years": keys, "phase1_events": w.events.to_numpy(), "phase5_events": [a.loc[x, "events"] for x in keys],
+                        "phase1_records": w.n_records.to_numpy(), "phase5_under_observation_at_start": [a.loc[x, "n_under_observation_at_window_start"] for x in keys]})
+    save(cmp, "p5_late_vs_phase1_windows")
+    print(cmp.to_string())
+    # death-vs-recurrence bounds (reused Phase 4 table; no competing-risk analysis possible)
+    b = pd.read_csv(TAB / "p4_metabric_death_vs_recurrence_bounds.csv", comment="#")
+    save(b, "p5_death_vs_recurrence_bounds")
 
 
 if __name__ == "__main__":

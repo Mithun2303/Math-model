@@ -1,0 +1,26 @@
+# phase5 descriptive METABRIC; raw patient file sha256[:12]=830fb39fee56; RFS time origin undocumented; not model validation
+family,horizon_years,test,groups,n_groups,chi2,df,p_raw,p_holm,note
+ER,5,global,ER (IHC) positive; ER (IHC) negative,2,74.5306227479961,1.0,5.970492512251447e-18,,"log-rank, administratively censored at horizon; strata restricted to those reliable at the horizon"
+ER,10,global,ER (IHC) positive; ER (IHC) negative,2,32.03488214767031,1.0,1.514289407734005e-08,,"log-rank, administratively censored at horizon; strata restricted to those reliable at the horizon"
+ER,20,global,ER (IHC) positive; ER (IHC) negative,2,13.96446189443091,1.0,0.000186298981345624,,"log-rank, administratively censored at horizon; strata restricted to those reliable at the horizon"
+PAM50,5,global,PAM50: LumA; PAM50: LumB; PAM50: Her2; PAM50: Basal; PAM50: claudin-low; PAM50: Normal,6,101.17973394480327,5.0,2.981062967955455e-20,,"log-rank, administratively censored at horizon; strata restricted to those reliable at the horizon"
+PAM50,5,pairwise,PAM50: claudin-low vs PAM50: LumA,2,3.450164765730948,1.0,0.06324546477440704,0.25298185909762816,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: claudin-low vs PAM50: LumB,2,5.635454862824433,1.0,0.017600778068299783,0.08800389034149891,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: claudin-low vs PAM50: Normal,2,1.0619843208386837,1.0,0.30276304337055376,0.9082891301116613,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: claudin-low vs PAM50: Her2,2,16.89788476065829,1.0,3.944551474067693e-05,0.0004339006621474462,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: claudin-low vs PAM50: Basal,2,21.125192743436955,1.0,4.302346716816871e-06,5.162816060180245e-05,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: LumA vs PAM50: LumB,2,35.749650619256464,1.0,2.2437220365684807e-09,2.9168386475390248e-08,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: LumA vs PAM50: Normal,2,9.044933021398597,1.0,0.002634238797111427,0.021073910376891415,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: LumA vs PAM50: Her2,2,63.92386636705115,1.0,1.2932146281764777e-15,1.810500479447069e-14,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: LumA vs PAM50: Basal,2,75.71292700692291,1.0,3.2805289484095735e-18,4.9207934226143603e-17,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: LumB vs PAM50: Normal,2,1.0026311104222454,1.0,0.31667469261805015,0.9082891301116613,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: LumB vs PAM50: Her2,2,7.234529546840444,1.0,0.0071514547505150666,0.042908728503090396,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: LumB vs PAM50: Basal,2,11.674385282746586,1.0,0.0006336647389411851,0.006336647389411851,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: Normal vs PAM50: Her2,2,7.590931165831163,1.0,0.005866264159571704,0.04106384911700193,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: Normal vs PAM50: Basal,2,10.233933195123868,1.0,0.0013788033460404988,0.01240923011436449,Holm over 15 pairwise tests in this family/horizon
+PAM50,5,pairwise,PAM50: Her2 vs PAM50: Basal,2,0.49059625348453184,1.0,0.4836614499425428,0.9082891301116613,Holm over 15 pairwise tests in this family/horizon
+PAM50,10,global,PAM50: LumA; PAM50: LumB; PAM50: claudin-low,3,48.63142896995125,2.0,2.7530834496457568e-11,,"log-rank, administratively censored at horizon; strata restricted to those reliable at the horizon"
+PAM50,10,pairwise,PAM50: claudin-low vs PAM50: LumA,2,0.6466121329181912,1.0,0.4213265409335357,0.4213265409335357,Holm over 3 pairwise tests in this family/horizon
+PAM50,10,pairwise,PAM50: claudin-low vs PAM50: LumB,2,14.280628407861531,1.0,0.00015747720949522246,0.0003149544189904449,Holm over 3 pairwise tests in this family/horizon
+PAM50,10,pairwise,PAM50: LumA vs PAM50: LumB,2,46.15638321025113,1.0,1.0918072007879693e-11,3.275421602363908e-11,Holm over 3 pairwise tests in this family/horizon
+PAM50,20,global,PAM50: LumA,1,,,,,fewer than two reliable strata

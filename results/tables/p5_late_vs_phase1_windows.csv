@@ -1,0 +1,6 @@
+# phase5 descriptive METABRIC; raw patient file sha256[:12]=830fb39fee56; RFS time origin undocumented; not model validation
+window_years,phase1_events,phase5_events,phase1_records,phase5_under_observation_at_start
+0-5,601.0,601,795,2376
+5-10,215.0,215,597,1581
+10-15,104.0,104,464,984
+15-20,32.0,32,358,520

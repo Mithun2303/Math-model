@@ -1,0 +1,4 @@
+file: configs/phase5.yaml
+sha256: 9081048b88634da27432cb42035d87042f68b674ed1a570ae62e6199583ab39f
+recorded_utc: 2026-11-05T18:55:30Z
+note: recorded BEFORE METABRIC was loaded for any comparison (Agent 2); scripts refuse to run if the hash differs

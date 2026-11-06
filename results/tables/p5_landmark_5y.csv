@@ -1,0 +1,29 @@
+# phase5 descriptive METABRIC; raw patient file sha256[:12]=830fb39fee56; RFS time origin undocumented; not model validation
+group,landmark_years,ahead_years,absolute_horizon_years,n_event_free_at_landmark,n_at_risk_at_horizon,n_events_in_window,reported,exclusion_reason,cond_cum_inc,ci_lo,ci_hi
+all usable,5,5,10,1581,984,215,True,,0.153155539817299,0.1352041092696662,0.1732424626918052
+all usable,5,10,15,1581,521,319,True,,0.26191634966305777,0.23710547814404737,0.2887987769687381
+all usable,5,15,20,1581,162,351,True,,0.3285511702395826,0.2969007406899341,0.36262714107061
+ER (IHC) positive,5,5,10,1225,738,186,True,,0.17193479941706347,0.15053843282529344,0.19600569725241568
+ER (IHC) positive,5,10,15,1225,369,275,False,no Phase 4 reliability criterion at 15 y; reported for the whole cohort only,,,
+ER (IHC) positive,5,15,20,1225,110,303,True,,0.3745948508825442,0.33601819784396814,0.4160614017916149
+ER (IHC) negative,5,5,10,314,222,25,True,,0.08610945953501281,0.058953812157151786,0.12491693009742444
+ER (IHC) negative,5,10,15,314,143,37,False,no Phase 4 reliability criterion at 15 y; reported for the whole cohort only,,,
+ER (IHC) negative,5,15,20,314,49,41,True,,0.17633768003371753,0.1300828999597683,0.23666122123077094
+PAM50: LumA,5,5,10,535,339,62,True,,0.13098743658561973,0.10346586685575465,0.16512820493141822
+PAM50: LumA,5,10,15,535,180,104,False,no Phase 4 reliability criterion at 15 y; reported for the whole cohort only,,,
+PAM50: LumA,5,15,20,535,61,120,True,,0.36094409992438004,0.3037960963214408,0.4251654276369413
+PAM50: LumB,5,5,10,299,171,60,True,,0.22693442522946705,0.18060869559712733,0.2829378829279362
+PAM50: LumB,5,10,15,299,74,84,False,no Phase 4 reliability criterion at 15 y; reported for the whole cohort only,,,
+PAM50: LumB,5,15,20,299,27,87,False,group not reliable at 20 y (Phase 4 criterion),,,
+PAM50: Her2,5,5,10,126,77,23,False,group not reliable at 10 y (Phase 4 criterion),,,
+PAM50: Her2,5,10,15,126,48,29,False,no Phase 4 reliability criterion at 15 y; reported for the whole cohort only,,,
+PAM50: Her2,5,15,20,126,18,31,False,group not reliable at 20 y (Phase 4 criterion),,,
+PAM50: Basal,5,5,10,116,79,5,False,group not reliable at 10 y (Phase 4 criterion),,,
+PAM50: Basal,5,10,15,116,46,7,False,no Phase 4 reliability criterion at 15 y; reported for the whole cohort only,,,
+PAM50: Basal,5,15,20,116,13,8,False,group not reliable at 20 y (Phase 4 criterion),,,
+PAM50: claudin-low,5,5,10,158,102,13,True,,0.0971766192132194,0.05741039223875788,0.1620166198763191
+PAM50: claudin-low,5,10,15,158,60,19,False,no Phase 4 reliability criterion at 15 y; reported for the whole cohort only,,,
+PAM50: claudin-low,5,15,20,158,17,25,False,group not reliable at 20 y (Phase 4 criterion),,,
+PAM50: Normal,5,5,10,102,61,18,False,group not reliable at 10 y (Phase 4 criterion),,,
+PAM50: Normal,5,10,15,102,25,27,False,no Phase 4 reliability criterion at 15 y; reported for the whole cohort only,,,
+PAM50: Normal,5,15,20,102,10,28,False,group not reliable at 20 y (Phase 4 criterion),,,

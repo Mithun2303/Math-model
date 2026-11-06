@@ -1,0 +1,9 @@
+# phase5 agent2; design sha256[:12]=9081048b8863 (configs/phase5.yaml, pre-registered); hypothetical simulated quantities vs descriptive METABRIC RFS (origin undocumented); not validation. Descriptive 'alignment offset' per prior; NOT an estimate.
+prior,shift_months,sup_norm,shift_fixed_window_EXPLORATORY,sup_norm_fixed_window_0_180_EXPLORATORY,descriptive_diagnostic_only
+P1_base,-60,0.1813643727598245,-60,0.1813643727598245,True
+P2_wide,-60,0.11694460356324557,-60,0.11694460356324557,True
+P3_loguniform,-60,0.14844444709964916,-60,0.14844444709964916,True
+P4_corr_pos,-60,0.18083103942649117,-60,0.18083103942649117,True
+P5_corr_neg,-60,0.18643103942649117,-60,0.18643103942649117,True
+P6_r_varied,-60,0.03850506372891593,-60,0.03850506372891593,True
+P7_fixed_initial,-60,0.23110665974862002,-60,0.23110665974862002,True

@@ -1,0 +1,9 @@
+# phase5 descriptive METABRIC; raw patient file sha256[:12]=830fb39fee56; RFS time origin undocumented; not model validation
+quantity,value
+"upper bound on fraction of events that are death-first, among events with KNOWN vital status (RFS == OS, died of disease)",0.10477178423236515
+upper bound if ALL events with missing vital status were also death-first,0.2717842323651452
+"events with documented relapse before death or no death (Recurred & Living, Recurred & other-cause death, Died of Disease with RFS < OS)",0.7282157676348547
+lower bound on that fraction,0.0
+n died of disease with RFS < OS,545
+"OS - RFS among them: median / IQR (months), CONDITIONAL on death (biased; not a delay distribution)",15.5 / 6.0-34.1
+note,OS-RFS is the time from the recorded RFS event to death only if both clocks share an origin; descriptive

@@ -1,0 +1,89 @@
+# Phase 5 (Agent 2): PRE-REGISTERED design for the descriptive model-vs-METABRIC consistency comparison.
+# Written and hashed BEFORE the METABRIC curve was loaded for any comparison (see results/tables/p5_prereg_hash.txt).
+# Nothing below is tuned to METABRIC. No biological parameter is fitted. Any scenario/metric added later is EXPLORATORY and flagged.
+# All model quantities are hypothetical; METABRIC quantities are descriptive (RFS as exported; time origin undocumented).
+
+purpose: >
+  Descriptive consistency check between model-generated event-time distributions (first upward crossing of a model-defined
+  burden threshold from residual disease) and the METABRIC RFS Kaplan-Meier curve. NOT validation, NOT calibration, NOT prediction.
+
+# ---------------------------------------------------------------- model-side inputs (reused, no new tuning)
+simulation_source:
+  note: >
+    Reuse the per-sample first-crossing times already computed in Phase 3 (results/tables/p3_mc_*_samples.csv): dense DOP853
+    trajectories (rtol 1e-9, atol 1e-12), horizon 240 months, all seven thresholds on the same samples (common random numbers).
+    No new parameter sweep is run. Time unit: months in both model and clinical data.
+  priors:
+    P1_base:        {files: [p3_mc_P1_samples.csv, p3_mc_P1_base_run_B_samples.csv, p3_mc_P1_batches_run_C_samples.csv], pooled_n: 15000}
+    P2_wide:        {files: [p3_mc_P2_wide_samples.csv], n: 5000}
+    P3_loguniform:  {files: [p3_mc_P3_loguniform_samples.csv], n: 5000}
+    P4_corr_pos:    {files: [p3_mc_P4_corr_pos_samples.csv], n: 5000}
+    P5_corr_neg:    {files: [p3_mc_P5_corr_neg_samples.csv], n: 5000}
+    P6_r_varied:    {files: [p3_mc_P6_r_varied_samples.csv], n: 5000}
+    P7_fixed_initial: {files: [p3_mc_P7_fixed_initial_samples.csv], n: 5000}
+  model_horizon_months: 240
+  seed_for_stochastic_mapping: 20261105     # only used by the death-first lag mapping
+
+# ---------------------------------------------------------------- prespecified scenario grid (full factorial)
+grid:
+  priors: [P1_base, P2_wide, P3_loguniform, P4_corr_pos, P5_corr_neg, P6_r_varied, P7_fixed_initial]   # 7
+  thresholds: [0.01, 0.02, 0.05, 0.1, 0.2, 0.3, 0.5]                                                    # 7, model-defined, not imaging limits
+  tau_months: [0, 6, 12, 24]            # unknown offset between the (undocumented) RFS origin and model t = 0
+  detect_delay_months: [0, 6, 12]       # d: recorded-later-than-crossing delay
+  death_first_fraction: [0.0, 0.105, 0.272]   # Phase 4 bounds on the death-first share (0 = pure recurrence mapping)
+  death_lag_mean_months: 24             # exponential lag when death-first (single assumption, Phase 4)
+  mapping: "t_clin = tau + t_model + d  (recurrence);  t_clin = tau + t_model + Lag  (death-first, Lag ~ Exp(24 mo))"
+  size: 1764                            # 7*7*4*3*3
+  reference_scenario: {prior: P1_base, threshold: 0.1, tau: 0, d: 0, death_first: 0.0}   # the Phase 3 headline definition, fixed in advance
+  initial_burden_scale: >
+    NOT in the grid: it would need re-simulation. In the linear regime it is exactly confounded with a time shift
+    (Phase 4, equivalence map), hence represented by the tau grid. Not separately explored.
+
+# ---------------------------------------------------------------- comparison horizons
+horizons_months:
+  primary: [60, 120]          # 5 and 10 y: METABRIC at-risk >= 100 and reliable (Phase 4)
+  secondary: [180, 240]       # 15 y (flagged: no Phase 4 reliability criterion) and 20 y (162 at risk overall; caution)
+  rule: "Clinical comparison horizons never exceed 240 months; model events are exact up to 240 months, so every F_sim(h) with h <= 240 is exact for any tau, d >= 0."
+
+# ---------------------------------------------------------------- METABRIC reference (computed only after this file is hashed)
+clinical_reference:
+  file: data/raw/brca_metabric/data_clinical_patient.txt
+  coding: "event = RFS_STATUS starts with '1'; time = RFS_MONTHS; usable = both present (expected n=2380, events=964, as Phase 4)"
+  estimator: "Kaplan-Meier cumulative incidence 1-S(t), Greenwood variance, log-log 95% pointwise CI (km_descriptive.km_point)"
+
+# ---------------------------------------------------------------- discrepancy metrics (all descriptive)
+metrics:
+  signed_difference: "D(h) = F_sim(h) - F_KM(h) for each horizon h (percentage points when reported)"
+  inside_ci: "F_sim(h) within the METABRIC 95% CI of F_KM(h)  (boolean)"
+  sup_norm: "max over a 1-month grid in [0, h] of |F_sim(t) - F_KM(t)|, h in {120, 240}"
+  late_increment: "F(240) - F(120) for simulation and METABRIC, and their ratio (shape descriptor)"
+  conditional_late_risk: "[F(240)-F(120)] / [1-F(120)]  (hazard-like late risk among those event-free at 10 y)"
+  alignment_curve: >
+    DESCRIPTIVE DIAGNOSTIC ONLY: sup-norm distance over [0,240] between F_KM and the simulated reference curve horizontally
+    shifted by s months, s in [-60, +60], per prior (theta = 0.1, d = 0, death_first = 0). The shift minimising the distance is
+    reported as an 'alignment offset'. It is NOT an estimate of the time origin, treatment delay or any parameter.
+  mc_uncertainty: "Wilson 95% interval of F_sim(h) (n = size of the simulated population) reported for transparency; not used in the criterion"
+
+# ---------------------------------------------------------------- pre-specified consistency criterion
+consistency_criterion:
+  definition: "A scenario is 'consistent at horizon h' if F_sim(h) lies inside the METABRIC 95% CI of F_KM(h). 'Consistent' means only that the two numbers are not distinguishable at that horizon; it is not evidence for the mechanism."
+  scenario_level: "Report, per horizon, the number and fraction of the 1764 scenarios that are consistent, and the min / max of D(h) over the grid (the consistency envelope)."
+  robust_finding_rule: "A statement is 'robust' only if it holds in ALL 1764 prespecified scenarios (and for every prior). Otherwise it is 'assumption-dependent' and the fraction is reported."
+  prespecified_statements:
+    S1: "F_sim(60) is below the METABRIC 95% CI at 60 months."
+    S2: "F_sim(120) is below the METABRIC 95% CI at 120 months."
+    S3: "F_sim(240) is inside the METABRIC 95% CI at 240 months."
+    S4: "The simulated late increment F(240)-F(120) is larger than the METABRIC late increment (simulated risk is later than observed)."
+    S5: "The simulated fraction of 240-month events occurring after 120 months exceeds the METABRIC fraction."
+    S6: "Simulated cumulative incidence at 240 months is higher than at 120 months by a factor > 2 (strongly accelerating late risk), whereas METABRIC's is < 2."
+  expectation_note: >
+    The model has no treatment phase, no early-recurrence mechanism, starts from a ~99% dormant microscopic residual state, and
+    events are threshold crossings; METABRIC RFS is a composite including disease-specific death with an undocumented origin.
+    A deficit of early simulated events is therefore expected and is neither evidence for nor against the dormancy mechanism.
+
+# ---------------------------------------------------------------- no-tuning rules
+rules:
+  - "No biological parameter is fitted to METABRIC; no prior is adjusted after seeing the comparison."
+  - "No 'best' simulation is selected; all scenarios of the grid are reported; the reference scenario is fixed above."
+  - "Any additional scenario, metric or statement added after the comparison is computed is labelled EXPLORATORY in tables and figures."
+  - "The alignment curve is a descriptive diagnostic and is excluded from the consistency criterion."
